@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yêu Cầu 1</title>
+
+
+</head>
+<body>
+
+<script>
+    let name;
+    let cmnd;
+    let birthday;
+    let email;
+    let address;
+    let typeService;
+    let typeRoom;
+    let typeCustomer;
+    let discount;
+    let quantityIncluded;
+    let rendDays;
+    let totalPay;
+
+    name = prompt("Input Name: ");
+    cmnd = prompt("Input CMND: ");
+    birthday = prompt("Input Birthday: ");
+    email = prompt("Input Email: ");
+    address = prompt("Input Address: ");
+    typeService = prompt("Input Type Service: ");
+    typeRoom = prompt("Input Type Room: ");
+    typeCustomer = prompt("Input Type Customer: ");
+    discount = prompt("Input Discount: ");
+    quantityIncluded = prompt("Input Quantity Included: ");
+    rendDays = prompt("Input rendDays: ");
+    totalPay = 300*rendDays*(1-parseFloat(discount)/100);
+
+    alert(
+        "Tên: " + name + "\n" +
+        "CMND: " + cmnd + "\n" +
+        "Ngày Sinh: " + birthday + "\n" +
+        "Email: " + email + "\n" +
+        "Địa Chỉ: " + address + "\n" +
+        "Loại Dịch Vụ: " + typeService + "\n" +
+        "Loại Phòng: " + typeRoom + "\n" +
+        "Loại Customer: " + typeCustomer + "\n" +
+        "Giảm Giá: " + discount + "\n" +
+        "Số lượng đi kèm: " + quantityIncluded + "\n" +
+        "Số lượng ngày: " + rendDays + "\n" +
+        "Tổng Tiền: " + totalPay);
+
+</script>
+
+</body>
+</html>

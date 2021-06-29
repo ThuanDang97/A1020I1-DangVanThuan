@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let num = parseInt(prompt("Input Number: "));
+    let a = num.toString();
+    let kq = [a[0]];
+
+    for(let i=1; i<a.length; i++)
+    {
+        if((a[i-1]%2 === 0)&&(a[i]%2 === 0))
+        {
+            kq.push('-', a[i]);
+        }
+        else
+        {
+            kq.push(a[i]);
+        }
+    }
+    console.log(kq.join(''));
+</script>
+</body>
+</html>

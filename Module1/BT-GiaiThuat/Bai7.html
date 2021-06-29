@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 7</title>
+</head>
+<body>
+<script>
+    // Tính tổng và tích các chữ số của một số nguyên dương m cho trước
+
+    let num = prompt("Nhập number: ");
+    let tong = 0;
+    let tich = 1;
+    for (let i = 0; i < num.length; i++){
+        tong += parseInt(num[i]);
+        tich *= parseInt(num[i]);
+    }
+
+    console.log(tong);
+    console.log(tich);
+
+    // let count = num.length;
+    // console.log(count);
+</script>
+</body>
+</html>

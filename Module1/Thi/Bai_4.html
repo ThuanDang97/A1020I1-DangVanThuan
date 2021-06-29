@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            border-collapse: collapse;
+
+        }
+        th{
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="Thêm Mới" onclick="addNew()" >
+<p id="hienThi">
+
+    <script>
+        class KhachHang {
+            constructor(id,name,phone,address,email) {
+                this.id = id;
+                this.name = name;
+                this.phone = phone;
+                this.address = address;
+                this.email = email;
+            }
+
+            getID(){
+                return this.id;
+            }
+            getName(){
+                return this.name;
+            }
+            getPhone(){
+                return this.phone;
+            }
+            getAddress(){
+                return this.address;
+            }
+            getEmail(){
+                return this.email;
+            }
+        }
+
+        let danhSachKH = [];
+
+        function hienThi(danhSach) {
+            let bang = '<table border="1">\n' +
+                '    <tr>\n' +
+                '        <th>Mã Khách Hàng</th>\n' +
+                '        <th>Tên Khách Hàng</th>\n' +
+                '        <th>Số Điện Thoại</th>\n' +
+                '        <th>Địa Chỉ</th>\n' +
+                '        <th>Email</th>\n' +
+                '    </tr>';
+            for (let i = 0; i < danhSach.length; i++) {
+                bang += '<tr>\n' +
+                    '        <td>' + danhSach[i].getID() + '</td>\n' +
+                    '        <td>' + danhSach[i].getName() + '</td>\n' +
+                    '        <td>' + danhSach[i].getPhone() + '</td>\n' +
+                    '        <td>' + danhSach[i].getAddress() + '</td>\n' +
+                    '        <td>' + danhSach[i].getEmail() + '</td>\n' +
+                    '    </tr>'
+            }
+            bang += '</table>';
+
+            document.getElementById("hienThi").innerHTML = bang;
+        }
+        function addNew() {
+            let id = prompt("Nhập mã khách hàng");
+            let name = prompt("Nhập tên khách hàng");
+            let phone = prompt("Nhập sđt khách hàng");
+            let address = prompt("Nhập địa chỉ khách hàng");
+            let email = prompt("Nhập email khách hàng");
+            let khachHang = new KhachHang(id,name,phone,address,email);
+            danhSachKH.push(khachHang);
+            hienThi(danhSachKH);
+        }
+    </script>
+</body>
+</html>

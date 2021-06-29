@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--         Bài 12: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lãi con) khi biết số tiền ban đầu,-->
+<!--         số tháng cho vay và lãi xuất hàng tháng.-->
+<!--vay 6 tháng lãi cố định là 15%/năm-->
+<!--vay 12 tháng lãi cố định là 10%/năm-->
+<!--vay 24 tháng lãi cố định là 5%/năm-->
+<script>
+    let a = parseInt(prompt('vui lòng nhập số tiền muốn vay!!'));
+    let b = parseInt(prompt('Bạn muốn trả trong vòng 6 tháng hay 12 tháng hay 24 tháng?'));
+    let c ;
+    if (b === 6){
+        c= a * ((15/100)/6);
+    }else if (b === 12){
+        c= a * ((10/100)/12);
+    }else {
+        c= a * ((5/100)/24);
+    }
+    alert('Tiền lãi hằng tháng sẽ trả trong ' + b + ' tháng là: ' + Math.round(c));
+</script>
+</body>
+</html>

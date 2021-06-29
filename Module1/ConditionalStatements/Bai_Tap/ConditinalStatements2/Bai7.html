@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Bài 7: Giải phương trình bậc 2.-->
+
+<script>
+    let a = parseInt(prompt('nhap a:'));
+    let b = parseInt(prompt('nhap b:'));
+    let c = parseInt(prompt('nhap c:'));
+    let delta = (b*b)- 4 * a *c;
+    alert('delta = '+ delta);
+    if (delta>0){
+        let x1 = (- b - Math.sqrt(delta)/2*a);
+        let x2 = (- b + Math.sqrt(delta)/2*a);
+        alert('phương trình có 2 nghiệm x1 = ' + x1 + ' x2 = ' + x2);
+    }else if (delta === 0){
+        let x = -b / (2*a);
+        alert('phương trình có nghiệm kép x1 = x2 = ' + x);
+    } else {
+        alert('phương trình vô nghiệm');
+    }
+
+</script>
+</body>
+</html>

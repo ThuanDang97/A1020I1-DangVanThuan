@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Bài 1- Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử. Chương trình thực hiện tính và
+    hiển thị xem có bao nhiêu số nguyên lớn hơn hoặc bằng 10.-->
+<script>
+    let arr = new Array(10);
+    for (let i = 0; i< arr.length ; i++){
+        arr[i] = parseInt(prompt("Vui lòng nhập phần tử "+ i + " : "));
+        if (arr[i] >= 10){
+            console.log(arr[i]);
+        }
+    }
+    console.log(arr);
+</script>
+</body>
+</html>

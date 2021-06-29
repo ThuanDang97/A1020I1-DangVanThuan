@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [];
+    let sum = 0;
+    for (let i = 0; i < 3; i++){
+        let number = parseInt(prompt("Nhập phần tử thứ " + i));
+        array.push(number);
+        if (number%3==0 && number%5==0){
+            sum+=number;
+        }
+    }
+    console.log(array);
+    console.log("Tổng các số là bội chung của 3 và 5 là: "+sum);
+
+</script>
+</body>
+</html>

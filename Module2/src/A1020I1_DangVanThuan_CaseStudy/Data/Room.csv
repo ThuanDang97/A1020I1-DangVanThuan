@@ -1,0 +1,2 @@
+id, nameServices, areaUse, rentPrice, maxNumberOfPeople, typeRent, freeServices 
+SVRO-1123,Room1,30,3,3,day,Car

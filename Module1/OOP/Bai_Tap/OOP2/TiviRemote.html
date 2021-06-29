@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Tivi {
+        constructor() {
+            this.chanel = 0;
+            this.volume = 0;
+            this.status = false;
+        }
+        getChanelTV(){
+            return this.chanel;
+        }
+        getVolumeTV(){
+            return this.volume;
+        }
+        getStatusTV(){
+            return this.status;
+        }
+        statusOnOffTV(){
+            this.status = !this.status;
+        }
+        changeChanelTV(kenh){
+            this.chanel = kenh;
+        }
+        volumeUpTV(){
+            if (this.status){
+                this.volume++;
+            }
+        }
+        volumeDownTV() {
+            if (this.status) {
+                this.volume--;
+            }
+        }
+    }
+    class Remote {
+        constructor(tivi) {
+            this.tivi = tivi;
+        }
+        statusOnOFFRM(){
+            this.tivi.statusOnOffTV();
+        }
+        changeChanelTV(kenh){
+            this.tivi.getChanelTV(kenh);
+        }
+        volumeUpRM(){
+            if (this.tivi.getStatusTV()){
+                this.tivi.volumeUpTV();
+            }
+        }
+        volumeDownRM() {
+            if (this.tivi.getStatusTV()) {
+                this.tivi.volumeDownTV();
+            }
+        }
+    }
+
+    let tivi = new Tivi();
+    let remote = new Remote(tivi);
+
+    alert(tivi.getStatusTV());
+    remote.statusOnOFFRM();
+    alert(tivi.getStatusTV());
+    remote.volumeUpRM();
+    remote.volumeUpRM();
+    remote.volumeUpRM();
+    remote.volumeUpRM();
+    remote.volumeUpRM();
+    alert(tivi.getVolumeTV());
+
+</script>
+</body>
+</html>

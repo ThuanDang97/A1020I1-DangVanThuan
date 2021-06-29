@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2</title>
+</head>
+<body>
+<!--Nhập vào tháng, năm bất kỳ. In ra số ngày tương ứng với tháng, năm đó.-->
+<input type="text" id="month"  placeholder="Nhập tháng">
+<input type="text" id="year"  placeholder="Nhập năm">
+<input type="button" value="checkDay" onclick="check()">
+
+<script>
+    function check(checkM,checkY) {
+        checkM = document.getElementById('month').value;
+        checkY = document.getElementById('year').value;
+        switch (checkM) {
+            case "1":
+            case "3":
+            case "5":
+            case "7":
+            case "8":
+            case "10":
+            case "12":
+                alert("Tháng có 31 ngày");
+                break;
+            case "4":
+            case "6":
+            case "9":
+            case "11":
+                alert("Tháng có 30 ngày");
+                break;
+            case "2":
+                if (checkYear(checkY)){
+                    alert("Tháng có 29 ngày");
+                    break;
+                }else{
+                    alert("Tháng có 28 ngày");
+                    break;
+                }
+            default:
+                alert("Ngày tháng bạn nhận không hợp lệ");
+                break;
+        }
+    }
+    function checkYear() {
+        let year = document.getElementById('year').value;
+        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0){
+            return true;
+        }
+        return false;
+    }
+</script>
+</body>
+</html>

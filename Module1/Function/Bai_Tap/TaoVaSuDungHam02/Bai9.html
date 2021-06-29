@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Bài 9: Viết hàm truyền vào một mảng ký tự, và một ký tự bất kỳ, kiểm tra xem ký tự bất kỳ đó có nằm trong mảng không.-->
+<!--Nếu có trả về số lần xuất hiện của ký tự đó, nếu không trả về -1.-->
+<script>
+    let n = parseInt(prompt("Nhập độ dài của mảng"));
+    let arr = new Array(n);
+    arr.length = n;
+    let num = prompt("Nhập 1 ký tự bất kỳ");
+    let count = 0;
+    function check(num) {
+        for (let i = 0; i < n; i++){
+            arr[i] = prompt("Nhập phần tử thứ " + (i+1));
+            if (num==arr[i]){
+                count++;
+            }else {
+                return -1;
+            }
+        }
+        console.log(count);
+    }
+    check(num);
+</script>
+</body>
+</html>

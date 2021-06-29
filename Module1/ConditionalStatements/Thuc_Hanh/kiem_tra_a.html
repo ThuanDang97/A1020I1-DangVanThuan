@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra giá trị a</title>
+</head>
+<body>
+    <script>
+        // cách 1: sử dụng if-esle
+        // let a = prompt('a?', '');
+        //
+        // if (a == 0) {
+        //     alert(0);
+        // }
+        //
+        // if (a == 1) {
+        //     alert(1);
+        // }
+        //
+        // if (a == 2 || a == 3) {
+        //     alert('2,3');
+        // }
+        // cách 2: sử dụng switch-case
+        let a = prompt('a?', '');
+        switch (a) {
+            case '0':
+                alert('0');
+                break;
+            case '1':
+                alert('1');
+                break;
+            case '2':
+            case '3':
+                alert('2,3');
+                break;
+            default:
+                alert('undefined');
+        }
+    </script>
+</body>
+</html>

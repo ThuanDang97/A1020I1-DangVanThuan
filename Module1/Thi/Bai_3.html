@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let n = parseInt(prompt("Nhập số phần tử trong mảng"));
+    let arrayNumber = [];
+    arrayNumber.length = n;
+    let a = 0;
+    let sum = "";
+    let count = "";
+    if (n < 50){
+        let number;
+        let k = parseInt(prompt("Nhập số nguyên dương K: "));
+        for (let i =0; i <= n; i++) {
+            number = parseInt(prompt("Nhập phần tử thứ " + i));
+            arrayNumber.push(number);
+            for (let j = i + 1; j < arrayNumber.length; j++) {
+                if ((arrayNumber[i] + arrayNumber[j]) % k === 0) {
+                    sum += arrayNumber[i] + " ," + arrayNumber[j];
+                }
+                count += sum;
+            }
+        }
+        console.log(k);
+        console.log(count + "\n");
+
+    }
+
+</script>
+</body>
+</html>

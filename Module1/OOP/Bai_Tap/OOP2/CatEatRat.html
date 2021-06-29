@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[*Bài tập] Phát triển ứng dụng mô phỏng lại quá trình mèo bắt chuột và ăn chuột.</title>
+</head>
+<body>
+<script>
+    class Rat{
+        constructor(name,weight,speed,status) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+            this.status = status;
+        }
+        sound(){
+            console.log("Chít, Chít, Chít!!!");
+        }
+    }
+
+    class Cat{
+        constructor(name,weight,speed) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+        }
+
+        sound(){
+            console.log("Meo, Meo!!!");
+        }
+        batchuot(rat){
+            if (this.speed >= rat.speed){
+                console.log("Mèo đã bắt được chuột");
+            }else {
+                console.log("chuột chạy mất rồi");
+            }
+        }
+        anchuot(rat){
+            if (rat.status === "song"){
+                this.weight += rat.weight;
+                console.log("Mèo đã ăn chuột, khối lượng mèo là: " + this.weight);
+            }else {
+                console.log("chuột đã chết nên không ăn được");
+            }
+        }
+    }
+    let jerry = new Rat("Jerry",10,10,"song");
+    let tom = new Cat("Tom",20,15);
+
+    jerry.sound();
+    tom.sound();
+
+    tom.batchuot(jerry);
+    tom.anchuot(jerry);
+
+</script>
+</body>
+</html>

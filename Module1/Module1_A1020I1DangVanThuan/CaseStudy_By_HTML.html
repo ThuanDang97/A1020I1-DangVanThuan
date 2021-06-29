@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        .left {
+            float: left;
+            width: 50%;
+            height: 250px;
+        }
+
+        .right {
+            float: left;
+            width: 50%;
+            height: 250px;
+        }
+
+        .blue {
+            color: dodgerblue;
+        }
+
+        .black {
+            color: black;
+        }
+
+        select {
+            width: 177px;
+        }
+    </style>
+</head>
+<body>
+
+<form>
+
+    <table border="1">
+        <tr>
+            <th><label>Full Name </label></th>
+            <td><input class="" type="text" id="name" name="fullName"></td>
+        </tr>
+        <tr>
+            <th><label>CMND </label></th>
+            <td><input class="" type="text" id="cmnd" name="CMND"></td>
+        </tr>
+        <tr>
+            <th><label>Birthday </label></th>
+            <td><input class="" type="text" id="birthday" name="birthDay"></td>
+        </tr>
+        <tr>
+            <th><label>Email </label></th>
+            <td><input class="" type="text" id="email" name="email"></td>
+        </tr>
+        <tr>
+            <th><label>Address </label></th>
+            <td><input class="" type="text" id="address" name="address"></td>
+        </tr>
+        <tr>
+            <th><label>Location </label></th>
+            <td><select class="" id="location" name="location">
+                <option value="">Chọn Tỉnh/TP</option>
+                <option value="Đà Nẵng">Đà Nẵng</option>
+                <option value="Huế">Huế</option>
+                <option value="Quảng Nam">Quảng Nam</option>
+            </select></td>
+        </tr>
+        <tr>
+            <th><label>Type Customer </label></th>
+            <td><select class="" id="typeCustomer" name="typeCustomer">
+                <option value="">Chọn Loại Customer</option>
+                <option value="Diamond">Diamond</option>
+                <option value="Platinum">Platinum</option>
+                <option value="Gold">Gold</option>
+                <option value="Silver">Silver</option>
+                <option value="Member">Member</option>
+            </select></td>
+        </tr>
+        <tr>
+            <th><label>Discount </label></th>
+            <td><input class="" type="text" id="discount" name="discount"></td>
+        </tr>
+        <tr>
+            <th><label>Quantity Included </label></th>
+            <td><input class="" type="text" id="quantityIncluded" name="quantityIncluded"></td>
+        </tr>
+        <tr>
+            <th><label>Rend Days </label></th>
+            <td><input class="" type="text" id="rendDays" name="rendDays"></td>
+        </tr>
+        <tr>
+            <th><label>Type Service </label></th>
+            <td><select class="" id="typeService" name="typeService">
+                <option value="">Chọn Type Service</option>
+                <option value="Villa">Villa</option>
+                <option value="House">House</option>
+                <option value="Room ">Room</option>
+            </select></td>
+        </tr>
+        <tr>
+            <th><label>Type Room </label></th>
+            <td><select class="" id="typeRoom" name="typeRoom">
+                <option value="">Chọn Type Room</option>
+                <option value="Vip">Vip</option>
+                <option value="Business">Business</option>
+                <option value="Normal ">Normal</option>
+            </select></td>
+        </tr>
+    </table>
+</form>
+<input type="submit" value="Xác nhận" name="submit" onclick="xacNhan1()">
+<!--<input type="submit" value="Chỉnh Sửa" name="edit" onclick="edit()" style="margin-left: 15px; margin-top: 10px">-->
+<input type="submit" value="List Customer" name="list" onclick="trackList()"
+       style="margin-left: 15px; margin-top: 10px">
+<h2 style="margin-left: 30%">Information Customer</h2>
+
+<div class="left">
+
+    <p class="blue">Full Name: <span id="kq" class="black"></span></p>
+    <p class="blue">CMND: <span id="kq1" class="black"></span></p>
+    <p class="blue">Birthday: <span id="kq2" class="black"></span></p>
+    <p class="blue">Email: <span id="kq3" class="black"></span></p>
+    <p class="blue">Address: <span id="kq4" class="black"></span></p>
+    <p class="blue">Type Service: <span id="kq5" class="black"></span></p>
+    <p><span id="amount"></span> Customer</p>
+</div>
+<div class="right">
+    <p class="blue">Type Room: <span id="kq6" class="black"></span></p>
+    <p class="blue">Type Customer: <span id="kq7" class="black"></span></p>
+    <p class="blue">Discount: <span id="kq8" class="black"></span></p>
+    <p class="blue">Quantity Included: <span id="kq9" class="black"></span></p>
+    <p class="blue">Rend Days: <span id="kq0" class="black"></span></p>
+    <h2>Total: <span id="kq10"></span></h2>
+</div>
+<p id="table" style="margin-top: 10px"></p>
+<script>
+    // Yêu Cầu 1: Nhập và hiện thông tin của customer
+    let listCustomer = [];
+
+    function xacNhan1() {
+        let check = false; // biến dùng để check ĐK
+
+        // Yêu Cầu 3: task 2 - format lại thông tin customer (Name)
+        let tempName = "";
+        let name = document.getElementById('name').value;
+        name = name.trim().toLowerCase();
+        for (let i = 0; i < name.length; i++) {
+            if (name.charAt(i) === " " && name.charAt(i + 1) === " ") {
+                continue;
+            }
+            if (i === 0 || name.charAt(i - 1) === " ") {
+                tempName += name.charAt(i).toUpperCase();
+                continue;
+            }
+            tempName += name.charAt(i);
+        }
+        name = tempName;
+        document.getElementById('kq').innerHTML = name;
+
+        // Yêu Cầu 3: task 1 - format lại thông tin customer (CMND)
+        let cmnd = document.getElementById('cmnd').value;
+        if (isNaN(cmnd) || cmnd == '' || cmnd.length != 9) {
+            alert('CMND is Incorrect!!!');
+            return;
+        } else {
+            document.getElementById('kq1').innerHTML = cmnd;
+        }
+
+        // Yêu Cầu 3: task 1 - format lại thông tin customer (BirthDay)
+        let dob = document.getElementById('birthday').value;
+        do {
+            if (dob.charAt(2) === "/" && dob.charAt(5) === "/") {
+                let day = dob.substring(0, 2);
+                let month = dob.substring(3, 5);
+                let year = dob.substring(6, 10);
+                if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
+                    day = Number.parseFloat(day);
+                    month = Number.parseFloat(month);
+                    year = Number.parseFloat(year);
+                }
+                if (Number.isInteger(day) && Number.isInteger(month) && Number.isInteger(year)) {
+                    if (day <= 31 && month <= 12 && year > 1000) {
+                        check = true;
+                        document.getElementById('kq2').innerHTML = dob;
+                    }
+                }
+            }
+            if (!check) {
+                alert("Birthday is Incorrect!!!");
+                return;
+            }
+        } while (!check);
+        check = false;
+
+        // Yêu Cầu 3: task 1 - format lại thông tin customer (Email)
+        let email = document.getElementById('email').value;
+        do {
+            let countAt = 0;
+            let countDoc = 0;
+            for (let i = 0; i < email.length; i++) {
+                if (email.charAt(i) === "@") {
+                    countAt++;
+                    for (let j = 0; j < email.length; j++) {
+                        if (email.charAt(j) === ".") {
+                            countDoc++;
+                        }
+                    }
+                }
+            }
+            if (countAt != 1 || countDoc < 1) {
+                alert("Email is Incorrect!!!");
+                return;
+            } else {
+                check = true;
+                document.getElementById('kq3').innerHTML = email;
+            }
+        } while (!check);
+        check = false;
+
+        // Yêu Cầu 3: task 2 - format lại thông tin customer (Address)
+        let diachi = document.getElementById('address').value;
+        let tempAdr = "";
+        diachi = diachi.trim().toLowerCase();
+        for (let i = 0; i < diachi.length; i++) {
+            if (diachi.charAt(i) === " " && diachi.charAt(i + 1) === " ") {
+                continue;
+            }
+            if (i === 0 || diachi.charAt(i - 1) === " " || diachi.charAt(i - 1) === "/") {
+                tempAdr += diachi.charAt(i).toUpperCase();
+                continue;
+            }
+            tempAdr += diachi.charAt(i);
+        }
+        diachi = tempAdr;
+        document.getElementById('kq4').innerHTML = diachi;
+
+        // typeService
+        let typeService = document.getElementById('typeService').value;
+        document.getElementById('kq5').innerHTML = typeService;
+
+        // typeRoom
+        let typeRoom = document.getElementById('typeRoom').value;
+        document.getElementById('kq6').innerHTML = typeRoom;
+
+        // typeCustomer
+        let typeCustomer = document.getElementById('typeCustomer').value;
+        document.getElementById('kq7').innerHTML = typeCustomer;
+
+        // Yêu Cầu 3: task 1 - format lại thông tin customer (QuantityIncluded)
+        let quantityIncluded = document.getElementById('quantityIncluded').value;
+        do {
+            if (!isNaN(quantityIncluded)) {
+                quantityIncluded = Number.parseFloat(quantityIncluded);
+                if (Number.isInteger(quantityIncluded) && quantityIncluded > 0) {
+                    check = true;
+                    document.getElementById('kq9').innerHTML = quantityIncluded;
+                }
+            }
+            if (!check) {
+                alert("quantityIncluded is incorrect!!");
+                return;
+            }
+        } while (!check);
+        check = false;
+
+        // Yêu Cầu 3: task 1 - format lại thông tin customer (RendDay)
+        let rendDays = document.getElementById('rendDays').value;
+        do {
+            if (!isNaN(rendDays)) {
+                rendDays = Number.parseFloat(rendDays);
+                if (Number.isInteger(rendDays) && rendDays > 0) {
+                    check = true;
+                    document.getElementById('kq0').innerHTML = rendDays;
+                }
+            }
+            if (!check) {
+                alert("rendDays is incorrect!!");
+                return;
+            }
+        } while (!check);
+        check = false;
+
+        // Yêu cầu 2:
+        // Mức giá theo thời gian lưu trú
+        if (rendDays >= 7) {
+            rendDays = 30;
+        } else if (rendDays < 7 && rendDays >= 5) {
+            rendDays = 20;
+        } else if (rendDays < 4 && rendDays >= 2) {
+            rendDays = 10;
+        }
+
+        // Mức giá theo địa chỉ
+        let address = document.getElementById('location').value;
+        if (address === "Đà Nẵng") {
+            address = 20;
+        } else if (address === "Huế") {
+            address = 10;
+        } else {
+            address = 5;
+        }
+
+        // Mức giá theo loại Customer
+        if (typeCustomer === "Diamond") {
+            typeCustomer = 15;
+        } else if (typeCustomer === "Platinum") {
+            typeCustomer = 10;
+        } else if (typeCustomer === "Gold") {
+            typeCustomer = 10;
+        } else if (typeCustomer === "Silver") {
+            typeCustomer = 5;
+        } else {
+            typeCustomer = 0;
+        }
+
+        // Discount
+        let idDiscount = document.getElementById('discount').value;
+        let discount = address + rendDays + typeCustomer + parseInt(idDiscount);
+        document.getElementById('kq8').innerHTML = idDiscount;
+
+
+        // tính tiền theo Type Service
+        let totalPay;
+        if (typeService === "Villa") {
+            totalPay = 500 * rendDays;
+        } else if (typeService === "House") {
+            totalPay = 300 * rendDays;
+        } else {
+            totalPay = 100 * rendDays;
+        }
+        let sum = totalPay - discount;
+        document.getElementById('kq10').innerHTML = sum;
+
+        listCustomer.push([name, cmnd, dob, email, diachi, typeService, typeRoom, typeCustomer, quantityIncluded, rendDays, discount, sum]);
+        console.log(listCustomer);
+        document.getElementsByTagName("form")[0].reset(); // sau khi lấy giá trị thì xoá thông tin trong form
+    }
+
+    // Yêu Cầu 2:
+    // function edit() {
+    //     document.getElementById('name').value = document.getElementById('kq').innerText;
+    //     document.getElementById('cmnd').value = document.getElementById('kq1').innerText;
+    //     document.getElementById('birthday').value = document.getElementById('kq2').innerText;
+    //     document.getElementById('email').value = document.getElementById('kq3').innerText;
+    //     document.getElementById('address').value = document.getElementById('kq4').innerText;
+    //     document.getElementById('typeService').value = document.getElementById('kq5').innerText;
+    //     document.getElementById('typeRoom').value = document.getElementById('kq6').innerText;
+    //     document.getElementById('typeCustomer').value = document.getElementById('kq7').innerText;
+    //     document.getElementById('discount').value = document.getElementById('kq8').innerText;
+    //     document.getElementById('quantityIncluded').value = document.getElementById('kq9').innerText;
+    //     document.getElementById('rendDays').value = document.getElementById('kq0').innerText;
+    //
+    // }
+
+    // Yêu Cầu 4: Lưu nhiều thông tin của customer,
+
+    function hienThi() {
+        let idTable = "<table border=\"1\">\n" +
+            "    <tr>\n" +
+            "        <th>STT</th>\n" +
+            "        <th>Full Name</th>\n" +
+            "        <th>CMND</th>\n" +
+            "        <th>Birthday</th>\n" +
+            "        <th>Email</th>\n" +
+            "        <th>Address</th>\n" +
+            "        <th>Type Service</th>\n" +
+            "        <th>Type Room</th>\n" +
+            "        <th>Type Customer</th>\n" +
+            "        <th>Quantity Included</th>\n" +
+            "        <th>Rend Days</th>\n" +
+            "        <th>Discount</th>\n" +
+            "        <th>Total</th>\n" +
+            "        <th>Edit</th>\n" +
+            "        <th>Delete</th>\n" +
+            "    </tr>";
+
+        for (let i = 0; i < listCustomer.length; i++) {
+            idTable += "    <tr>\n" +
+                "        <td>" + (i + 1) + "</td>\n" +
+                "        <td>" + listCustomer[i][0] + "</td>\n" +
+                "        <td>" + listCustomer[i][1] + "</td>\n" +
+                "        <td>" + listCustomer[i][2] + "</td>\n" +
+                "        <td>" + listCustomer[i][3] + "</td>\n" +
+                "        <td>" + listCustomer[i][4] + "</td>\n" +
+                "        <td>" + listCustomer[i][5] + "</td>\n" +
+                "        <td>" + listCustomer[i][6] + "</td>\n" +
+                "        <td>" + listCustomer[i][7] + "</td>\n" +
+                "        <td>" + listCustomer[i][8] + "</td>\n" +
+                "        <td>" + listCustomer[i][9] + "</td>\n" +
+                "        <td>" + listCustomer[i][10] + "</td>\n" +
+                "        <td>" + listCustomer[i][11] + "</td>\n" +
+                "        <td><button onclick='sua()'>Sửa</button></td>\n" +
+                "        <td><button onclick='xoa()'>Xoá</button></td>\n" +
+                "    </tr>";
+        }
+        idTable += "</table>";
+        document.getElementById('table').innerHTML = idTable;
+        document.getElementById('amount').innerHTML = listCustomer.length;
+    }
+
+    function trackList() {
+        hienThi(listCustomer.sort());
+    }
+
+    function sua(idSua) {
+        for (let i = 0; i < listCustomer.length; i++) {
+            // hiện thông báo cho người dùng chọn phần tử để sửa, sau đó sử dụng switch-case để trỏ đến phần tử cần sửa
+            idSua = prompt(
+                "Vui lòng chọn mục cần sửa: " + "\n" +
+                "1.Full Name" + "\n" +
+                "2.CMND" + "\n" +
+                "3.Birthday" + "\n" +
+                "4.Email" + "\n" +
+                "5.Address" + "\n" +
+                "6.Type Service" + "\n" +
+                "7.Type Room" + "\n" +
+                "8.Type Customer" + "\n" +
+                "9.Quantity Included" + "\n" +
+                "10.Rend Day" + "\n" +
+                "10.Discount"
+            );
+
+            for (let i = 0; i < listCustomer.length; i++) {
+                switch (idSua) {
+                    case "1": {
+                        listCustomer[i][0] = prompt("Enter name: ");
+                        break;
+                    }
+                    case "2": {
+                        listCustomer[i][1] = prompt("Enter CMND: ");
+                        break;
+                    }
+                    case "3": {
+                        listCustomer[i][2] = prompt("Enter Ngày Sinh: ");
+                        break;
+                    }
+                    case "4": {
+                        listCustomer[i][3] = prompt("Enter Email: ");
+                        break;
+                    }
+                    case "5": {
+                        listCustomer[i][4] = prompt("Enter Địa Chỉ: ");
+                        break;
+                    }
+                    case "6": {
+                        listCustomer[i][5] = prompt("Enter Loại Dịch Vụ: ");
+                        break;
+                    }
+                    case "7": {
+                        listCustomer[i][6] = prompt("Enter Loại Phòng: ");
+                        break;
+                    }
+                    case "8": {
+                        listCustomer[i][7] = prompt("Enter Loại Customer: ");
+                        break;
+                    }
+                    case "9": {
+                        listCustomer[i][8] = prompt("Enter Số Lượng Đi Kèm: ");
+                        break;
+                    }
+                    case '10': {
+                        listCustomer[i][9] = prompt("Enter Số Lượng Ngày: ");
+                        break;
+                    }
+                    case "11": {
+                        listCustomer[i][10] = prompt("Enter Mã Giảm Giá: ");
+                        break;
+                    }
+                    default:
+                        alert("Failed!!!");
+                        break;
+                }
+                idTable += "    <tr>\n" +
+                    "        <td>" + (i + 1) + "</td>\n" +
+                    "        <td>" + listCustomer[i][0] + "</td>\n" +
+                    "        <td>" + listCustomer[i][1] + "</td>\n" +
+                    "        <td>" + listCustomer[i][2] + "</td>\n" +
+                    "        <td>" + listCustomer[i][3] + "</td>\n" +
+                    "        <td>" + listCustomer[i][4] + "</td>\n" +
+                    "        <td>" + listCustomer[i][5] + "</td>\n" +
+                    "        <td>" + listCustomer[i][6] + "</td>\n" +
+                    "        <td>" + listCustomer[i][7] + "</td>\n" +
+                    "        <td>" + listCustomer[i][8] + "</td>\n" +
+                    "        <td>" + listCustomer[i][9] + "</td>\n" +
+                    "        <td>" + listCustomer[i][10] + "</td>\n" +
+                    "        <td>" + listCustomer[i][11] + "</td>\n" +
+                    "        <td><button onclick='sua()'>Sửa</button></td>\n" +
+                    "        <td><button onclick='xoa()'>Xoá</button></td>\n" +
+                    "    </tr>";
+            }
+            idTable += "</table>";
+            xacNhan1();
+            hienThi();
+        }
+    }
+
+    function xoa(del) {
+        for (let i = 0; i < listCustomer.length; i++) {
+            confirm("Bạn có muốn xoá Customer " + listCustomer[i][0]);
+            listCustomer.splice(del, 1);
+            alert("Bạn đã xoá thành công Customer");
+            break;
+        }
+        hienThi();
+    }
+
+</script>
+</body>
+</html>

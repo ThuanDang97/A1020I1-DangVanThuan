@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Thực hành] Xây dựng lớp Date</title>
+</head>
+<body>
+<script>
+
+     class MyDate{
+         constructor(day, month, year) {
+             this.day = day;
+             this.month = month;
+             this.year = year;
+         }
+         getDay(){
+             return this.day;
+         };
+         getMonth(){
+             return this.month;
+         };
+         getYear(){
+             return this.year;
+         };
+
+         setDay(day){
+             this.day = day;
+         };
+         setMonth(month){
+             this.month = month;
+         };
+         setYear(year){
+             this.year = year;
+         };
+     }
+     let day1 = new MyDate(11,12,2020);
+     alert(day1.day + "/" + day1.month + "/" + day1.year);
+
+</script>
+</body>
+</html>

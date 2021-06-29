@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Bài 6: Tính hoa hồng nhận được tuỳ theo mức doanh số bán hàng
+
+    let a = parseInt(prompt('Nhập doanh thu bán hàng tháng này: '));
+    let b ;
+    if (a < 1000000) {
+        b = a * 5/100;
+    } else if (a < 3000000 && a > 1000000) {
+        b = a * 15/100;
+    }else {
+        b = a * 25/100;
+    }
+    alert(b)
+</script>
+</body>
+</html>

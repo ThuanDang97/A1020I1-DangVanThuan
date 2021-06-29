@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Move Ball!</title>
+</head>
+<body>
+<form>
+    <img id="image" src="ball.jpg" style="left: 10px; position: relative"/>
+    <p>Click button below to move the image to right</p>
+    <input type="button" value="Click Me" onclick="move()"/>
+</form>
+    <script>
+        let img = document.getElementById('image');
+        function move() {
+            img.style.left = parseInt(img.style.left) + 10 + 'px';
+        }
+    </script>
+</body>
+</html>

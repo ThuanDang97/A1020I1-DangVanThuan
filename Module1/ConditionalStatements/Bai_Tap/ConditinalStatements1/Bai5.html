@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Bài 5: Xếp hạng học lực của học sinh dựa trên các điểm bài kiểm tra, điểm thi giữa kỳ, điểm thi cuối kỳ
+    let a = parseInt(prompt('nhap diem bai kiem tra: '));
+    let b = parseInt(prompt('nhap diem thi giua ky: '));
+    let c = parseInt(prompt('nhap diem thi cuoi ky: '));
+    let sum = (a + b + c) / 3;
+    if (sum < 3.5)
+    {
+        alert('xep loai hoc luc yeu!');
+    } else if (sum > 5 && sum < 6.5)
+    {
+        alert('xep loai hoc luc trung binh');
+    } else if (sum > 6.5 && sum < 8)
+    {
+        alert('xep loai hoc luc kha');
+    } else
+    {
+        alert('xep loai hoc luc gioi');
+    }
+</script>
+</body>
+</html>

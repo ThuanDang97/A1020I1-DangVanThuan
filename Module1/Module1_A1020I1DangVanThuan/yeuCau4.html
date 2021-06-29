@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yêu Cầu 4</title>
+</head>
+<body>
+<script>
+    let arrNameCustomers = [];
+    while (true) {
+        let choose = parseInt(prompt("1.Add Name Customer \n" + "2.Delete Customer"));
+        switch (choose) {
+            case 1: {
+                let numAdd = parseInt(prompt("Vui lòng nhập số lượng customer muốn thêm"));
+                for (let i = 0; i < numAdd; i++) {
+                    let nameCustomer = prompt("Nhập tên Customer thứ " + (i + 1));
+                    arrNameCustomers.push(nameCustomer);
+                }
+                arrNameCustomers.sort();
+                let temp = "";
+                for (let i = 0; i < arrNameCustomers.length; i++) {
+                    temp += (i + 1) + ". " + arrNameCustomers[i] + "\n";
+                }
+                alert(temp);
+                break;
+            }
+            case 2: {
+                let check = false;
+                let nameCustomer = prompt("Nhập tên Customer cần xoá");
+                    for (let i = 0; i < arrNameCustomers.length; i++) {
+                        if (arrNameCustomers[i] === nameCustomer) {
+                            arrNameCustomers.splice(i, 1);
+                            check = true;
+                        }
+                    }
+                    if (!check) {
+                        alert("Tên Customer bạn nhập không có trong mảng");
+                    }
+                    let temp = "";
+                    for (let i = 0; i < arrNameCustomers.length; i++) {
+                        temp += (i + 1) + ". " + arrNameCustomers[i] + "\n";
+                    }
+                    alert(temp);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+</script>
+</body>
+</html>

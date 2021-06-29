@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Bài 6: Viết chương trình nhập vào một mảng ký tự, tìm tất cả các ký tự trong mảng là (-) và thay thế các ký tự này bởi ký tự ( _ )-->
+
+<Script>
+    let n = prompt(" Nhập độ dài ký tự cần nhập");
+    let arr = [];
+    arr.length = n;
+    let change = "_";
+    for (let i = 0; i<arr.length;i++){
+        arr[i] = prompt("Nhập phần tử " +i+ " trong mảng:");
+        if (arr[i] ==="-"){
+            arr[i] = change;
+        }
+    }
+    alert(arr);
+</Script>
+</body>
+</html>

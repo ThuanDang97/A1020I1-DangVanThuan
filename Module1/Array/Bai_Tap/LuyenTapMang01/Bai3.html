@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Bài 3- Viết chương trình khởi tạo mảng số nguyên. Hiển hiện giá trị lớn nhất trong mảng đó.-->
+<!--In ra giá trị trung bình của các phần tử trong mảng.-->
+
+<script>
+    let n = prompt("vui lòng nhập độ dài mảng ");
+    let arr = new Array(n);
+    arr.length = n;
+    let max = 0;
+    let index = 0;
+    let average = 0;
+    for (let i = 0; i < arr.length ; i++) {
+        arr[i] = parseInt(prompt("Vui lòng nhập phần tử " + i + " : "));
+        if (arr[i] > max){
+            max = arr[i];
+            index = i;
+        }
+        average += arr[i];
+        console.log(arr[i]);
+    }
+    console.log("giá trị lớn nhất trong mảng ở vị trí "+ index +  " có giá trị là: " + max );
+    console.log(average);
+
+</script>
+</body>
+</html>

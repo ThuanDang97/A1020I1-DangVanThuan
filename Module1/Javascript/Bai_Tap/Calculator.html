@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+        .value
+        {
+            width: 180px;
+        }
+
+    </style>
+</head>
+<body>
+    <form method="post">
+        <h2>Calculator</h2>
+        <br>
+        <input type="text" id="value1" class="value">
+        <input type="text" id="value2" class="value">
+        <br><br>
+        <button type="button" id="cong" name="add" onclick="Cong()">Addition(+)</button>
+        <button type="button" id="tru" name="sub" onclick="Tru()">Subtraction(-)</button>
+        <button type="button" id="nhan" name="multi" onclick="Nhan()">Multiplication(X)</button>
+        <button type="button" id="chia" name="division" onclick="Chia()">Division(/)</button>
+    </form>
+    <p id="KQ"></p>
+    <script>
+
+        function Cong() {
+            let a = document.getElementById('value1').value;
+            let b = document.getElementById('value2').value;
+            let c;
+            c = parseInt(a) + parseInt(b);
+            document.getElementById('KQ').innerHTML = 'Result Division ' + c;
+        }
+        function Tru() {
+            let a = document.getElementById('value1').value;
+            let b = document.getElementById('value2').value;
+            let c;
+            c = parseInt(a) - parseInt(b);
+            document.getElementById('KQ').innerHTML = 'Result Division ' + c;
+        }
+        function Nhan() {
+            let a = document.getElementById('value1').value;
+            let b = document.getElementById('value2').value;
+            let c;
+            c = parseInt(a) * parseInt(b);
+            document.getElementById('KQ').innerHTML = 'Result Division ' + c;
+        }
+        function Chia() {
+            let a = document.getElementById('value1').value;
+            let b = document.getElementById('value2').value;
+            let c;
+            c = parseInt(a) / parseInt(b);
+            document.getElementById('KQ').innerHTML = 'Result Division ' + c;
+        }
+
+
+
+    </script>
+</body>
+</html>

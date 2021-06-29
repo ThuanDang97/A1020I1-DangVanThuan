@@ -1,0 +1,9 @@
+body{
+    background-color: white !important;
+}
+.navbar{
+    background-color: white !important;
+}
+.navbar li a {
+    color: black !important;
+}

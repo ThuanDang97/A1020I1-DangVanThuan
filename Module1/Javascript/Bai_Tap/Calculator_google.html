@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator Form Google</title>
+    <style>
+        .calculator
+        {
+            margin-left: 30%;
+        }
+        .hienthi
+        {
+            width: 30%;
+            margin-left: 372px;
+        }
+        .banphim
+        {
+            background-color: #CCCCCC;
+            width: 50px;
+        }
+        .phimso
+        {
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+ <form>
+     <td colspan="7"><input  class="hienthi" id="result" type="text" ></td>
+    <table class="calculator">
+
+        <tr>
+            <th><input class="banphim" type="button" value="Rad"> </th>
+            <th><input class="banphim" type="button" value="..."> </th>
+            <th><input class="banphim" type="button" value="x!"> </th>
+            <th><input class="banphim" type="button" value="("> </th>
+            <th><input class="banphim" type="button" value=")"> </th>
+            <th><input class="banphim" type="button" value="%"> </th>
+            <th><input class="banphim" type="reset" value="AC"> </th>
+        </tr>
+        <tr>
+            <th><input class="banphim" type="button" value="Inv"> </th>
+            <th><input class="banphim" type="button" value="sin"> </th>
+            <th><input class="banphim" type="button" value="In"> </th>
+            <td><input class="phimso" type="button" value="7" onclick="number('7')"> </td>
+            <td><input class="phimso" type="button" value="8" onclick="number('8')"> </td>
+            <td><input class="phimso" type="button" value="9" onclick="number('9')"> </td>
+            <th><input class="banphim" type="button" value="%"> </th>
+        </tr>
+        <tr>
+            <th><input class="banphim" type="button" value="π"> </th>
+            <th><input class="banphim" type="button" value="cos"> </th>
+            <th><input class="banphim" type="button" value="log"> </th>
+            <th><input class="phimso" type="button" value="4" onclick="number('4')"> </th>
+            <th><input class="phimso" type="button" value="5" onclick="number('5')"> </th>
+            <th><input class="phimso" type="button" value="6" onclick="number('6')"> </th>
+            <th><input class="banphim" type="button" value="X"> </th>
+        </tr>
+        <tr>
+            <th><input class="banphim" type="button" value="e"> </th>
+            <th><input class="banphim" type="button" value="tan"> </th>
+            <th><input class="banphim" type="button" value="√"> </th>
+            <th><input class="phimso" type="button" value="1" onclick="number('1')"> </th>
+            <th><input class="phimso" type="button" value="2" onclick="number('2')"> </th>
+            <th><input class="phimso" type="button" value="3" onclick="number('3')"> </th>
+            <th><input class="banphim" type="button" value="-"> </th>
+        </tr>
+        <tr>
+            <th><input class="banphim" type="button" value="Ans"> </th>
+            <th><input class="banphim" type="button" value="EXP"> </th>
+            <th><input class="banphim" type="button" value="x"> </th>
+            <th><input class="phimso" type="button" value="0" onclick="number('0')"> </th>
+            <th><input class="phimso" type="button" value="." onclick="number('.')"> </th>
+            <th><input type="button" value="=" style="background-color: #0066FF; width: 50px"> </th>
+            <th><input class="banphim" type="button" value="+"> </th>
+        </tr>
+
+    </table>
+
+ </form>
+    <script>
+        function number(num) {
+            document.getElementById('result').value += num;
+        }
+        // ý tưởng tạo 1 funtion phép tính, trong funtion sẽ gọi 5 funtion +,-,x,/ và =
+        // nếu thực hiện phép tính thì sẽ bằng funtion num + funtion phép tính + funtion num = funtion =
+    </script>
+</body>
+</html>

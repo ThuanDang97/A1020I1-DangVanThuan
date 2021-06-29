@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <!--Bài 10: Viết chương trình tính giá điện.-->
+        <!--Bậc 1: Cho kWh từ 0 - 50 =  1.678-->
+        <!--Bậc 2: Cho kWh từ 51 - 100 = 1.734-->
+        <!--Bậc 3: Cho kWh từ 101 - 200 = 2.014-->
+        <!--Bậc 4: Cho kWh từ 201 - 300 = 2.536-->
+        <!--Bậc 5: Cho kWh từ 301 - 400 = 2.834-->
+        <!--Bậc 6: Cho kWh từ 401 trở lên = 2.927-->
+
+<script>
+    let a = parseInt(prompt('xin vui lòng nhập số điện đã sử dụng trong tháng: '));
+    let sum = 0;
+    if (a < 50){
+        sum = a * 1678;
+    }else if (a > 50 && a < 100){      //51 - 100 = 1.734
+        sum = (a-50)*1678 + a*1734;
+    }else if (a > 100 && a < 200){     //101 - 200 = 2.014
+        sum = (a-50)*1678 + (a-100)*1734 + a*2014;
+    }else if (a > 200 && a < 300){     //201 - 300 = 2.536
+        sum = (a-50)*1678 + (a-100)*1734 + (a-200)*2014 + a*2536;
+    }else if (a > 300 && a < 400){     //301 - 400 = 2.834
+        sum = (a-50)*1678 + (a-100)*1734 + (a-200)*2014 + (a-300)*2536 + a*2834;
+    }else {                            //401 trở lên = 2.927
+        sum = (a-50)*1678 + (a-100)*1734 + (a-200)*2014 + (a-300)*2536 + (a-400)*2834 + a*2927;
+    }
+    alert('Tổng số tiền điện đã sử dụng trong tháng là: '+ sum);
+</script>
+</body>
+</html>

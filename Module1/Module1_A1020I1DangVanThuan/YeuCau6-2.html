@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yêu Cầu 6-2</title>
+</head>
+<body>
+<script>
+    let listEmployee = [];
+    class Employee{
+        constructor(name,birthday,cmnd,sdt,email,level,office) {
+            this.name = name;
+            this.birthday = birthday;
+            this.cmnd = cmnd;
+            this.sdt = sdt;
+            this.email = email;
+            this.level = level;
+            this.office = office;
+            this.salary = 0;
+        }
+        getNameEmployee(){
+            return this.name;
+        }
+        getBirthdayEmployee(){
+            return this.birthday;
+        }
+        getCMNDEmployee(){
+            return this.cmnd;
+        }
+        getSDTEmployee(){
+            return this.sdt;
+        }
+        getEmailEmployee(){
+            return this.email;
+        }
+        getlevelEmployee(){
+            return this.level;
+        }
+        getOfficeEmployee(){
+            return this.office;
+        }
+        getSalaryEmployee(){
+            if (this.getOfficeEmployee()==="Manager"){
+                this.salary = 500;
+            }else if (this.getOfficeEmployee()==="Sale"){
+                this.salary= 300;
+            }else if (this.getOfficeEmployee()==="Marketing"){
+                this.salary = 200;
+            }
+            return this.salary;
+        }
+
+        setNameEmployee(name){
+            this.name = name;
+        }
+        setBirthdayEmployee(birthday){
+            this.birthday = birthday;
+        }
+        setCMNDEmployee(cmnd){
+            this.cmnd = cmnd;
+        }
+        setSDTEmployee(sdt){
+            this.sdt = sdt;
+        }
+        setEmailEmployee(email){
+            this.email = email;
+        }
+        setLevelEmployee(level){
+            this.level = level;
+        }
+        setOfficeEmployee(office){
+            this.office = office;
+        }
+    }
+    function displayMainMenu() {
+        let choose = parseInt(prompt(
+            "1. Add New Employee. \n" +
+            "2. Display Information Employee. \n" +
+            "3. Salary of Employee. \n" +
+            "4. Exit"
+        ));
+        while (true) {
+            switch (choose) {
+                case 1: {
+                    addNewEmployee();
+                    break;
+                }
+                case 2: {
+                    displayInfoEmployee();
+                    break;
+                }
+                case 3: {
+                    displaySalary();
+                    break;
+                }
+                case 4: {
+                    break;
+                }
+                default:
+                    alert("false");
+                    return displayMainMenu();
+            }
+        }
+    }
+    displayMainMenu();
+
+    function addNewEmployee() {
+        let employee = new Employee();
+        employee.setNameEmployee(prompt("Enter Name: "));
+        employee.setBirthdayEmployee(prompt("Enter Day of Birth: "));
+        employee.setEmailEmployee(prompt("Enter Email: "));
+        employee.setCMNDEmployee(prompt("Enter CMND: "));
+        employee.setSDTEmployee(prompt("Enter SDT"));
+        employee.setLevelEmployee(prompt("Enter Level"));
+        employee.setOfficeEmployee(prompt("Enter office"));
+        listEmployee.push(employee);
+        alert("Bạn đã thêm thành công Employee");
+        displayMainMenu();
+    }
+
+    function displayInfoEmployee(){
+        let temp = [];
+        for (let i = 0; i < listEmployee.length; i++){
+            temp += i+ ". Name: " + listEmployee[i].getNameEmployee() + "\n";
+        }
+        let chooseDisplay = parseInt(prompt(temp));
+        alert(
+            "1.Tên: " + listEmployee[chooseDisplay].getNameEmployee() + "\n" +
+            "2.Ngày Sinh: " + listEmployee[chooseDisplay].getBirthdayEmployee() + "\n" +
+            "3.Email: " + listEmployee[chooseDisplay].getEmailEmployee() + "\n" +
+            "4.CMND: " + listEmployee[chooseDisplay].getCMNDEmployee() + "\n" +
+            "5.SDT: " + listEmployee[chooseDisplay].getSDTEmployee() + "\n" +
+            "6.Trình Độ: " + listEmployee[chooseDisplay].getlevelEmployee() + "\n" +
+            "7.Vị Trí: " + listEmployee[chooseDisplay].getOfficeEmployee()
+        );
+        displayMainMenu();
+    }
+    function displaySalary() {
+        let temp = "";
+        for (let i = 0; i < listEmployee.length; i++){
+            temp+=i + ". Name: " + listEmployee[i].getNameEmployee()+ "\n";
+        }
+        let chooseDisplay = parseInt(prompt(temp));
+        alert("Trợ cấp của bạn là: " + listEmployee[chooseDisplay].getSalaryEmployee());
+        displayMainMenu();
+    }
+</script>
+</body>
+</html>

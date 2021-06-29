@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yêu Cầu 3</title>
+</head>
+<body>
+<script>
+    let name;
+    let cmnd;
+    let birhtday;
+    let email;
+    let address;
+    let typeService;
+    let typeRoom;
+    let typeCustomer;
+    let discount;
+    let quantityIncluded;
+    let rendDays;
+    let totalPay;
+    let check = false; // biến check điều kiện
+    let tempName = ""; // biến tạm để chứa tên đã format
+    let tempAdr = ""; // biến tạm để chứa địa chỉ đã format
+    let tempCus = ""; // biến tạm để chứa khách hàng đã format
+
+    name = prompt("Input Name: ");
+    name = name.trim().toLowerCase();
+    for (let i = 0; i < name.length; i++){
+        if (name.charAt(i)=== " " && name.charAt(i+1) === " "){
+            continue;
+        }
+        if (i===0 || name.charAt(i-1)===" "){
+            tempName+=name.charAt(i).toUpperCase();
+            continue;
+        }
+        tempName += name.charAt(i);
+    }
+    name=tempName;
+    //CMND
+    do {
+
+        cmnd = prompt("Input CMND: ");
+        if (!isNaN(cmnd)){
+            cmnd=Number.parseFloat(cmnd);
+        }
+        if (!Number.isInteger(cmnd)){
+            alert("CMND is Incorrect!!!");
+            continue;
+        }
+        if (cmnd<10000000 || cmnd>999999999){
+            alert("CMND is Incorrect!!!");
+            continue;
+        }
+        check = true;
+    }while (!check);
+    check=false;
+    //birthday
+    do {
+        birhtday = prompt("Input Birthday: DD/MM/YYYY");
+        if (birhtday.charAt(2)==="/" && birhtday.charAt(5)==="/"){
+            let day = birhtday.substring(0,2);
+            let month = birhtday.substring(3,5);
+            let year = birhtday.substring(6,10);
+            if (!isNaN(day)&&!isNaN(month)&&!isNaN(year)){
+                day=Number.parseFloat(day);
+                month=Number.parseFloat(month);
+                year=Number.parseFloat(year);
+            }
+            if (Number.isInteger(day) && Number.isInteger(month) && Number.isInteger(year)){
+                if (day<=31 && month <= 12 && year > 1950){
+                    check=true;
+                }
+            }
+        }
+        if (!check){
+            alert("Birthday is Incorrect!!!");
+        }
+    }while (!check);
+    check=false;
+    //Email
+    do {
+        let countAt = 0;
+        let countDot = 0;
+        email = prompt("Input Email: ");
+        for (let i=0;i<email.length;i++){
+            if (email.charAt(i)==="@"){
+                countAt++;
+                for (let j=0;j<email.length;j++){
+                    if (email.charAt(j)==="."){
+                        countDot++;
+                    }
+                }
+            }
+        }
+        if (countAt!==1 || countDot < 1){
+            alert("Email is incorrect!!");
+        }else {
+            check = true;
+        }
+    }while (!check);
+    check=false;
+    // địa chỉ
+    address = prompt("Input Address: ");
+    address = address.trim().toLowerCase();
+    for (let i = 0; i < address.length; i++){
+        if (address.charAt(i)=== " " && address.charAt(i+1) === " "){
+            continue;
+        }
+        if (i===0 || address.charAt(i-1)===" "){
+            tempAdr+=address.charAt(i).toUpperCase();
+            continue;
+        }
+        tempAdr += address.charAt(i);
+    }
+    address=tempAdr;
+    // loại dịch vụ
+    typeService = prompt("Input Type Service: ");
+    // loại phòng
+    typeRoom = prompt("Input Type Room: ");
+    // loại khách hàng
+    typeCustomer = prompt("Input Type Customer: ");
+    typeCustomer = typeCustomer.trim().toLowerCase();
+    for (let i = 0; i < typeCustomer.length; i++){
+        if (typeCustomer.charAt(i)=== " " && typeCustomer.charAt(i+1) === " "){
+            continue;
+        }
+        if (i===0){
+            tempCus+=typeCustomer.charAt(i).toUpperCase();
+            continue;
+        }
+        tempCus += typeCustomer.charAt(i);
+    }
+    typeCustomer=tempCus;
+    // giảm giá
+    discount = prompt("Input Discount: ");
+    // số lượng người đi kèm
+    do {
+        quantityIncluded = prompt("Input Quantity Included: ");
+        if (!isNaN(quantityIncluded)){
+            quantityIncluded=Number.parseFloat(quantityIncluded);
+            if (Number.isInteger(quantityIncluded) && quantityIncluded > 0){
+                check= true;
+            }
+        }
+        if (!check){
+            alert("quantityIncluded is incorrect!!")
+        }
+    }while (!check);
+    check= false;
+    // số ngày thuê
+    do {
+        // rendDays trả về 1 số nguyên và lớn hơn 0 thì điều kiện đúng, đk sai thì thông báo sai và nhập lại
+        rendDays = prompt("Input rendDays: ");
+        if (!isNaN(rendDays)){
+            rendDays=Number.parseFloat(rendDays);
+            if (Number.isInteger(rendDays) && rendDays > 0){
+                check= true;
+            }
+        }
+        if (!check){
+            alert("rendDays is incorrect!!")
+        }
+    }while (!check);
+    check = false;
+
+    alert(
+        "Tên: " + name + "\n" +
+        "CMND: " + cmnd + "\n" +
+        "Ngày Sinh: " + birhtday + "\n" +
+        "Email: " + email + "\n" +
+        "Địa Chỉ: " + address + "\n" +
+        "Loại Dịch Vụ: " + typeService + "\n" +
+        "Loại Phòng: " + typeRoom + "\n" +
+        "Loại Customer: " + typeCustomer + "\n" +
+        "Giảm Giá: " + discount + "\n" +
+        "Số lượng đi kèm: " + quantityIncluded + "\n" +
+        "Số lượng ngày: " + rendDays);
+
+</script>
+</body>
+</html>

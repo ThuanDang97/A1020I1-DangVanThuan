@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hiển thị các số nguyên tố</title>
+</head>
+<body>
+                            <!--in ra 20 số nguyên tố-->
+<!--<script>-->
+<!--    let number = 2;-->
+<!--    let count = 0;-->
+<!--    let kq = "";-->
+<!--    while (count < 20)-->
+<!--    {-->
+<!--        let check = true;-->
+<!--        for (let i = 2;i < number;i++ ){-->
+<!--            if (number%i===0){-->
+<!--                check = false;-->
+<!--                break;-->
+<!--            }-->
+<!--        }-->
+<!--            if (check === true)-->
+<!--            {-->
+<!--                kq += number + ", ";-->
+<!--                count++;-->
+<!--            }-->
+<!--        number++;-->
+<!--    }-->
+<!--        document.write(kq);-->
+<!--</script>-->
+                    <!--kiểm tra 1 số có phải là số nguyên tố hay không-->
+
+<!--<script>-->
+<!--    let num = prompt("nhập để kiểm tra số nguyên tố: ");-->
+<!--    for (let i = 2; i< num; i++)-->
+<!--    {-->
+<!--        if (num%i===0){-->
+<!--            console.log(num+ " không phải là số nguyên tố!!");-->
+<!--            break;-->
+<!--        }-->
+<!--        else {-->
+<!--            console.log(num+ " là số nguyên tố");-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+                <!--hiển thị số lượng số nguyên tố nhập từ bàn phím-->
+<script>
+    let a = prompt("Nhập số lượng số nguyên tố cần hiển thị");
+    let number = 2;
+    let count = 0;
+    let kq = "";
+    while (count < a)
+    {
+        let check = true;
+        for (let i = 2;i < number;i++ ){
+            if (number%i===0){
+                check = false;
+                break;
+            }
+        }
+        if (check === true)
+        {
+            kq += number + ", ";
+            count++;
+        }
+        number++;
+    }
+    document.write(kq);
+</script>
+</body>
+</html>

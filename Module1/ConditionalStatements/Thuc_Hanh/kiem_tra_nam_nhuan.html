@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra năm nhuận</title>
+</head>
+<body>
+    <script>
+        // cách 1:
+        // let year = parseInt(prompt("Enter a year"));
+        // // nếu giá trị year thoả 3 điều kiện chia hết cho 4,100 và 400 thì cho kết quả là năm nhuận,
+        // // ngược lại thì không nhuận
+        // if (year % 4 == 0) {
+        //     if (year % 100 == 0) {
+        //         if (year % 400 == 0) {
+        //             alert(year + " is a leap year");
+        //         } else {
+        //             alert(year + " is NOT a leap year");
+        //         }
+        //     } else {
+        //         alert(year + " is a leap year");
+        //     }
+        // } else {
+        //     alert(year + " is NOT a leap year");
+        // }
+        // cách 2:
+        // let year = parseInt(prompt("Enter a year"));
+        // let isLeapYear = false;
+        // // gán cho giá trị isleapYear = false, sau đó sẽ tính giá trị của year có thoả 3 điều kiện không
+        // // nếu thoả 3 điều kiện thì giá trị isleapYear = true
+        // if (year % 4 == 0) {
+        //     if (year % 100 == 0) {
+        //         if (year % 400 == 0) {
+        //             isLeapYear = true;
+        //         }
+        //     } else {
+        //         isLeapYear = true;
+        //     }
+        // }
+        //
+        // if (isLeapYear) {
+        //     alert(year + " is a leap year"); // nếu biến isleapYear = true thì là năm nhuận, ngược lại thì không
+        // } else {
+        //     alert(year + " is NOT a leap year");
+        // }
+        // cách 3: sử dụng cú pháp tách biến
+        let year = parseInt(prompt("Enter a year"));
+        let isLeapYear = false;
+        let isDivisibleBy4 = year % 4 == 0;
+        if (isDivisibleBy4) {
+            let isDivisibleBy100 = year % 100 == 0;
+            if (isDivisibleBy100) {
+                let isDivisibleBy400 = year % 400 == 0;
+                if (isDivisibleBy400) {
+                    isLeapYear = true;
+                }
+            } else {
+                isLeapYear = true;
+            }
+        }
+
+        if (isLeapYear) {
+            alert(year + " is a leap year");
+        } else {
+            alert(year + " is NOT a leap year");
+        }
+    </script>
+</body>
+</html>

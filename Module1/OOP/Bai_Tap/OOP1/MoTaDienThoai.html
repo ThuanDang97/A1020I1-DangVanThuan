@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Xây dựng lớp mô tả điện thoại</title>
+</head>
+<body>
+<script>
+    class Mobile {
+        constructor() {
+            this.trangThai = false;
+            this.pin = 100;
+            this.vungNhoST = [];
+            this.vungNhoTNDen = [];
+            this.vungNhoTNDaGui = [];
+        }
+        getTrangThai(){
+            return this.trangThai;
+        }
+        getPin(){
+            return this.pin;
+        }
+        batTat(){
+            this.trangThai = !this.trangThai;
+            this.pin--;
+        }
+        xacpin(){
+            if (this.pin < 10){
+                this.pin = 100;
+                alert("Pin đã được sạc đầy!");
+            }
+        }
+        soanTN(message){
+            this.vungNhoST.push(message);
+            this.pin--;
+        }
+        nhanTN(message){
+            this.vungNhoTNDen.push(message);
+            this.pin--;
+        }
+        guiTN(dienthoai,message){
+            this.soanTN(message);
+            this.vungNhoTNDaGui = this.vungNhoST;
+            dienthoai.nhanTN(this.vungNhoTNDaGui);
+            this.pin--;
+        }
+        showTNDaGui(){
+            return this.vungNhoTNDaGui;
+            this.pin--;
+        }
+        getTNDaNhan(){
+            return this.vungNhoTNDen;
+            this.pin--;
+        }
+    }
+
+    let nokia = new Mobile();
+    let iphone = new Mobile();
+    nokia.batTat();
+    iphone.batTat();
+    alert("Điện thoại Nokia đang "+nokia.getTrangThai());
+    alert("Điện thoại Iphone đang "+iphone.getTrangThai());
+    nokia.guiTN(iphone,"Alo alo 123");
+    alert(iphone.getTNDaNhan());
+
+
+    // nokia.xacpin();
+    // nokia.getPin();
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator 2</title>
+</head>
+<body>
+<form method="post">
+    <h2>Calculator</h2>
+    <br>
+    <input type="text" id="value1" class="value">
+    <input type="text" id="value2" class="value">
+    <br><br>
+    <button type="button" id="cong" name="add" onclick="phepTinh('+')">Addition(+)</button>
+    <button type="button" id="tru" name="sub" onclick="phepTinh('-')">Subtraction(-)</button>
+    <button type="button" id="nhan" name="multi" onclick="phepTinh('X')">Multiplication(X)</button>
+    <button type="button" id="chia" name="division" onclick="phepTinh('/')">Division(/)</button>
+</form>
+<p id="KQ"></p>
+<script>
+    function phepTinh(pt)
+    {
+        let a = document.getElementById('value1').value;
+        let b = document.getElementById('value2').value;
+        let kq = 0;
+        switch (pt) {
+            case "+":
+                kq = parseInt(a) + parseInt(b);
+                break;
+            case "-":
+                kq = a - b;
+                break;
+            case "X":
+                kq = a * b;
+                break;
+            case "/":
+                kq = a / b;
+                break;
+        }
+        document.getElementById('KQ').innerHTML = kq;
+    }
+
+
+
+
+</script>
+
+</body>
+</html>

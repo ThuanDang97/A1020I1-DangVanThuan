@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="91acd5b1-ed7e-48f3-9f13-f25720ed7823" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../BaiTap/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BaiTap/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BaiTap/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BaiTap/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BaiTap/Product/src/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BaiTap/Product/src/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BaiTap/Product/src/service/ProductServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo anh tien/css/_b11_mvc/product_a10/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../demo anh tien/css/_b11_mvc/product_a10/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-web-mvc/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/java-web-mvc/.idea/csv-plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-web-mvc/out/artifacts/java_web_mvc_war_exploded/WEB-INF/classes/controller/CustomerServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/java-web-mvc/out/artifacts/java_web_mvc_war_exploded/WEB-INF/classes/controller/CustomerServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-web-mvc/out/artifacts/java_web_mvc_war_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/java-web-mvc/out/artifacts/java_web_mvc_war_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-web-mvc/out/artifacts/java_web_mvc_war_exploded/customer/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/java-web-mvc/out/artifacts/java_web_mvc_war_exploded/customer/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-web-mvc/out/artifacts/java_web_mvc_war_exploded/customer/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/java-web-mvc/out/artifacts/java_web_mvc_war_exploded/customer/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-web-mvc/out/artifacts/java_web_mvc_war_exploded/customer/view.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/java-web-mvc/out/artifacts/java_web_mvc_war_exploded/customer/view.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-web-mvc/out/artifacts/java_web_mvc_war_exploded/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-web-mvc/out/production/java-web-mvc/controller/CustomerServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/java-web-mvc/out/production/java-web-mvc/controller/CustomerServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-web-mvc/src/controller/CustomerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-web-mvc/src/controller/CustomerServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-web-mvc/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/java-web-mvc/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-web-mvc/web/customer/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/java-web-mvc/web/customer/edit.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-web-mvc/web/customer/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/java-web-mvc/web/customer/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-web-mvc/web/customer/view.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/java-web-mvc/web/customer/view.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-web-mvc/web/index.jsp" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1sOmh4Jg4s1E4JJOOICelAw2oQE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="91acd5b1-ed7e-48f3-9f13-f25720ed7823" name="Default Changelist" comment="" />
+      <created>1620752125084</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1620752125084</updated>
+      <workItem from="1620752126668" duration="1203000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lí Sản Phẩm</title>
+</head>
+<body>
+    <input id="tenSP" name="tenSP" type="text" placeholder="Tên Sản Phẩm">
+    <input type="button" onclick="add()" value="Add">
+    <p><span id="amount"></span> sản phẩm</p>
+    <p id="kq"></p>
+<script>
+    let arr =['Iphone', 'Xiaomi', 'LG', 'SamSung'];
+    function hienThi() {
+        let idTable = "<table border=\"1\">\n" +
+            "    <tr>\n" +
+            "        <th>STT</th>\n" +
+            "        <th>Name</th>\n" +
+            "        <th>Edit</th>\n" +
+            "        <th>Delete</th>\n" +
+            "    </tr>";
+        for (let i = 0; i< arr.length; i++){
+            idTable += "    <tr>\n" +
+                "        <td>"+(i+1)+"</td>\n" +
+                "        <td>"+arr[i]+"</td>\n" +
+                "        <td><button onclick='sua()'>Sửa</button></td>\n" +
+                "        <td><button onclick='xoa()'>Xoá</button></td>\n" +
+                "    </tr>";
+        }
+        idTable += "</table>";
+        document.getElementById('kq').innerHTML = idTable;
+        document.getElementById('amount').innerHTML = arr.length;
+    }
+    hienThi();
+
+    function add() {
+        let idSP = document.getElementById('tenSP').value;
+        if (idSP!==""){
+            arr.push(idSP);
+        }
+        document.getElementById('kq').innerHTML = arr;
+        document.getElementById('tenSP').value = "";
+        hienThi();
+    }
+
+    function sua(idSua) {
+        for (let i=0; i<arr.length;i++){
+            let newName = prompt("Vui lòng nhập tên sản phẩm mới thay thế cho " + arr[i]);
+            if (newName!==null && newName!==""){
+                confirmid = confirm("Bạn có muốn thay đổi tên sản phẩm thành "+ newName + " không?");
+                arr.splice(idSua,1,newName);
+                break;
+            }
+        }
+        hienThi();
+    }
+
+    function xoa(del) {
+        confirm("Bạn có muốn xoá sản phẩm " +arr.splice(del,1));
+        hienThi();
+    }
+</script>
+</body>
+</html>

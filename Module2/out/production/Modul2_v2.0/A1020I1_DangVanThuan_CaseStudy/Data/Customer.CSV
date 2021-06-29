@@ -1,0 +1,6 @@
+fullName, dayOfBirth, gender, cardNumber, phoneNumber, email, typeCustomer, address, services
+Đặng Văn Thuận,11/11/2020,Male,123 123 123,123,abcd@abcd.com,a,a
+Đặng Văn Thuận,11/12/1990,Female,123 123 123,123,abcd@abc@abc,a,a
+Đặng Văn Hùng,11/11/2020,,123 123 123,123,abcd@abc.abc,á,d
+Anh Dũng,12/12/2000,Male,123 123 123,123,abcd@abc.com,ád,aád
+Đặng Văn Thuận,25/10/1997,Male,123 123 123,123,abc@gmail.com,á,a

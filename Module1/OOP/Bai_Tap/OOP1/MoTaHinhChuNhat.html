@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Xây dựng lớp mô tả hình chữ nhật</title>
+</head>
+<body>
+    <canvas id="canvasShape" height="500px" width="500px"></canvas>
+    <p id="kq1"></p>
+    <p id="kq2"></p>
+<script>
+    class Rectangle {
+        constructor(height,width,) {
+            this.width = width;
+            this.height = height;
+        }
+
+        perimeter(p){
+            p = 2*(this.width + this.height);
+            document.getElementById('kq1').innerHTML = "Chu vi hình chữ nhật là: " + "2* " + "("+this.width + " + " + this.height +")"+ " = " + p;
+        }
+
+        area(s){
+            s = this.width * this.height;
+            document.getElementById('kq2').innerHTML = "Diện tích hình chữ nhật là: " +this.width + "*" + this.height+ " = " + s;
+        }
+        shapeRecangle(){
+            let canvasS = document.getElementById('canvasShape');
+            let context = canvasS.getContext("2d");
+            context.rect(100,100,this.width,this.height);
+            context.stroke();
+            context.fillStyle = color;
+            context.fill();
+        }
+    }
+
+    let width = parseInt(prompt("Nhập chiều rộng: "));
+    let height = parseInt(prompt("Nhập chiều cao: "));
+    let color = prompt("Nhập màu bạn muốn tô vào");
+    let Recangle1 = new Rectangle(width,height);
+    Recangle1.perimeter();
+    Recangle1.area();
+    Recangle1.shapeRecangle();
+
+
+</script>
+</body>
+</html>

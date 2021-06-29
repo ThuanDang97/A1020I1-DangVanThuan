@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Bài 11: Viết chương trình tính thuế thu nhập cá nhân.-->
+<!--0 - 5tr thuế 5%-->
+<!--5tr - 10tr thuế 10%-->
+<!--10tr - 18tr thuế 15%-->
+<!--18tr - 32tr thuế 20%-->
+<!--32tr - 52tr thuế 25%-->
+<!--52tr - 80tr thuế 30%-->
+<!--80tr trở lên thuế 35%-->
+
+<script>
+    let a = parseInt(prompt('vui lòng nhập lương để tính thuế : '));
+    let b ;
+    if (a < 5000000){
+        b = a * 5 / 100;
+    }else if (a > 5000000 && a < 10000000){
+        b = a * 10 / 100;
+    }else if (a > 1000000 && a < 18000000){
+        b = a * 15 / 100;
+    }else if (a > 18000000 && a < 32000000){
+        b = a * 20 / 100;
+    }else if (a > 32000000 && a < 52000000){
+        b = a * 25 / 100;
+    }else if (a > 52000000 && a < 80000000){
+        b = a * 30 / 100;
+    }else {
+        b = a * 35 / 100;
+    }
+    alert('Số tiền thuế phải nộp là: ' + b);
+</script>
+</body>
+</html>

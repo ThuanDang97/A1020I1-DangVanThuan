@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển đổi tiền tệ</title>
+    <style>
+        .tittle
+        {
+            text-align: center;
+            margin-left: 15%;
+        }
+
+        .button
+        {
+            margin-left: 5%;
+            background-color: darkslateblue;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label class="tittle1">Amount</label>
+        <label class="tittle">From Currency</label>
+        <label class="tittle">To Currency</label>
+        <br>
+        <input type="text" id="tien" name="tien" min="0">
+        <select id="from" style="margin-left: 6%; width: 100px">
+            <option value="VN">Việt Nam</option>
+            <option value="USD">USA</option>
+        </select>
+        <select  id="to" style="margin-left: 15%; width: 100px">
+            <option value="USD">USA</option>
+            <option value="VN">Việt Nam</option>
+        </select>
+        <button type="button" onclick="tinhTien()" class="button" id="button">Convert</button>
+    </form>
+    <p id="show"> </p>
+    <script>
+            function tinhTien()
+            {
+                // khai báo biến from, to và tien và trỏ về id của chúng,
+                let tien = document.getElementById("tien").value;
+                let from = document.getElementById("from").value;
+                let to = document.getElementById("to").value;
+                let a = 0; // tạo giá trị a để lưu kết quả và gán cho biến a = 0
+                if (from==="USD"&&to==="VN")
+                {
+                    a = tien*23000;
+                }
+                else if (from==="VN"&&to==="USD")
+                {
+                    a = tien/23000;
+                }
+                else
+                {
+                    a = tien;
+                }
+                document.getElementById('show').innerHTML = 'Result ' + a;
+
+            }
+    </script>
+</body>
+</html>

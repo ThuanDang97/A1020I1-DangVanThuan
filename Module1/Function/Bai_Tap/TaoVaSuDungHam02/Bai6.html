@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Bài 6: Viết hàm nhận vào một số, kiểm tra xem nếu số đưa vào có phải là nguyên dương không. -->
+<!--Nếu là nguyên dương trả về true, ngược lại trả về false.-->
+<script>
+    let num = prompt("Nhập ký tự số");
+    function check(a) {
+        if (!isNaN(a)){
+            if (parseInt(a) > 0){
+                alert("True");
+            } else{
+                alert("False");
+            }
+        } else {
+            alert("Kí tự bạn vừa nhập không phải là số nguyên dương")
+        }
+    }
+
+    check(num);
+</script>
+</body>
+</html>

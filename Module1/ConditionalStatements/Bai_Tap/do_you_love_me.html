@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Do You Love Me?</title>
+    <style>
+        body
+        {
+            top: 300px;
+            bottom: 300px;
+            left: 300px;
+            right: 300px;
+        }
+    </style>
+</head>
+<body>
+<h1 style="position:absolute; left: 38%; top:175px;">DO YOU LOVE ME ?</h1>
+<input type="button" value="YES" onclick="yes()" style="position:absolute; left:550px; top:250px;">
+<input type="button" id="no" value="NO" onmouseover="no()" style="position:absolute; left:650px; top:250px;">
+<script>
+    function yes()
+    {
+        alert("Love u <3");
+    }
+    function no() {
+        let x = Math.random() * window.innerHeight;
+        let y = Math.random() * window.innerWidth;
+        document.getElementById('no').style.left = x + 'px';
+        document.getElementById('no').style.top = y + 'px';
+
+    }
+</script>
+</body>
+</html>

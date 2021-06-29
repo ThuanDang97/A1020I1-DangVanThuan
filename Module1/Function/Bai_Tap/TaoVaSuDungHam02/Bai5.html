@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Bài 5: Viết hàm nhận vào 3 số nguyên bất kỳ, trả về số nguyên có giá trị nhỏ nhất.-->
+<script>
+
+    let arr = new Array(3);
+    let min = 0;
+    for (let i = 0; i < arr.length; i++){
+        arr[i] = parseInt(prompt("nhập số thứ "+ (i+1) +": "));
+    }
+    function minNum(arr) {
+        min = arr[0];
+        if (min > arr[1]){
+            min = arr[1];
+        }
+        if (min > arr[2]) {
+            min = arr[2];
+        }
+    }
+    minNum(arr);
+    alert(min);
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Bài 3: Viết hàm tính giai thừa của một số nguyên bất kỳ được đưa vào. Gọi hàm vừa xây dựng được.-->
+
+<script>
+    let num = parseInt(prompt("Nhap n:"));
+    let gt = 1;
+    function giaiThua(a) {
+        if (a === 1 || a === 0){
+            alert(gt);
+        }else {
+            for (let i = 2; i <= a; i++){
+                gt *= i;
+            }
+            alert("giai thừa của "+num+ " là " + gt);
+        }
+
+    }
+    giaiThua(num);
+</script>
+</body>
+</html>

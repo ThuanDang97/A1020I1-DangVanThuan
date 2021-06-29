@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Từ Điển</title>
+</head>
+<body>
+<input type="text" id="nhap" placeholder="Nhap tieng anh vao day">
+<input type="button" value="Change" onclick="change()">
+<p id="kq"></p>
+<script>
+    let en = ["Hello","Bye","Sorry"];
+    let vn = ["Xin Chào","Tạm Biệt","Xin Lỗi"];
+    let check = false;
+    let a;
+    function change() {
+        let word = document.getElementById('nhap').value;
+        for (let i = 0; i < en.length ; i++){
+            if (en[i]===word){
+                check = true;
+                a = i;
+                break
+            }
+        }
+        if (check){
+            alert(en[a] + " : "+ vn[a]);
+        }else
+            alert("Không tìm thấy từ cần dịch!!!")
+    }
+</script>
+</body>
+</html>

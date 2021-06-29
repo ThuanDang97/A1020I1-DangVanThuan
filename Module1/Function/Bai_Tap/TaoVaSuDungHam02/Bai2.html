@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Bài 2: Viết hàm tính diện tích, hàm tính chu vi hình tròn. Gọi hàm vừa xây dựng được-->
+
+<script>
+    let r = parseInt(prompt("Nhập bán kính hình tròn"));
+    function tinhToan(a) {
+        let c = (2*a) * Math.PI;
+        let s = (a*a) * Math.PI;
+        alert("Chu vi hình tròn là: " + c);
+        alert("Diện tích hình tròn là: " + s);
+    }
+    tinhToan(r);
+</script>
+
+</body>
+</html>

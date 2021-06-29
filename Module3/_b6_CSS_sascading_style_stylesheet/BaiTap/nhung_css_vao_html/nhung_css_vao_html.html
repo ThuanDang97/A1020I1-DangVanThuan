@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Nhúng CSS vào trang HTML</title>
+    <style>
+        .internalCSS1 {
+            color: green;
+        }
+
+        .internalCSS2 {
+            color: blue;
+        }
+    </style>
+    <link rel="stylesheet" href="css/external_css.css">
+</head>
+<head>
+
+</head>
+<body>
+<!--inline-->
+
+    <h2 style="color: green">This is heading 1</h2>
+    <p style="color: blue">This is ordinary paragraph.</p>
+
+<!--internal-->
+
+    <h2 class="internalCSS1">This is heading 1</h2>
+    <p class="internalCSS2">This is ordinary paragraph.</p>
+
+<!--external-->
+    <h2 class="internalCSS3">This is heading 1</h2>
+    <p class="internalCSS4">This is ordinary paragraph.</p>
+</body>
+</html>

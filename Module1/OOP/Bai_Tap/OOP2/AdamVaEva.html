@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Phát triển ứng dụng nhỏ mô phỏng câu chuyện Adam và Eva</title>
+</head>
+<body>
+<script>
+
+    class Apple {
+        constructor() {
+            this.weight = 10;
+        }
+        getWeight(){
+            return this.weight;
+        }
+        decrease(){
+            this.weight--;
+        }
+        isEmpty() {
+            if (this.weight === 0){
+                console.log("Táo đã hết")
+            }
+        }
+    }
+
+
+    class Human {
+        constructor(name,gender, weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+        getName(){
+            return this.name;
+        }
+        getGender(){
+            return this.gender;
+        }
+        getWeightHuman(){
+            return this.weight;
+        }
+        said(human,talk){
+            talk = prompt("Nhập câu nói muốn nói: ");
+            console.log(human + ": "+talk);
+        }
+
+        eatApple(apple){
+            if (apple.getWeight() > 0){
+                apple.decrease();
+                this.weight++;
+            }
+            return this.weight;
+        }
+        checkApple(apple){
+            if (apple.getWeight() > 0){
+                console.log("Táo còn " + apple.weight + " đơn vị")
+            }else {
+                apple.isEmpty();
+            }
+        }
+    }
+
+    let apple = new Apple();
+    let adam = new Human("Adam","Nam",70);
+    let eva = new Human("Eva","Nữ",50);
+
+    adam.said("adam");
+    eva.said("eva");
+    // ăn lần 1:
+    adam.eatApple(apple);
+    console.log("Sau khi ăn khối lượng của Adam tăng lên "+adam.getWeightHuman());
+    adam.checkApple(apple);
+    eva.eatApple(apple);
+    console.log("Sau khi ăn khối lượng của Eva tăng lên "+eva.getWeightHuman());
+    eva.checkApple(apple);
+    // ăn lần 2
+    adam.eatApple(apple);
+    console.log("Sau khi ăn khối lượng của Adam tăng lên "+adam.getWeightHuman());
+    adam.checkApple(apple);
+    eva.eatApple(apple);
+    console.log("Sau khi ăn khối lượng của Eva tăng lên "+eva.getWeightHuman());
+    eva.checkApple(apple);
+    //ăn lần 3
+    adam.eatApple(apple);
+    console.log("Sau khi ăn khối lượng của Adam tăng lên "+adam.getWeightHuman());
+    adam.checkApple(apple);
+    eva.eatApple(apple);
+    console.log("Sau khi ăn khối lượng của Eva tăng lên "+eva.getWeightHuman());
+    eva.checkApple(apple);
+    // ăn lần 4
+    adam.eatApple(apple);
+    console.log("Sau khi ăn khối lượng của Adam tăng lên "+adam.getWeightHuman());
+    adam.checkApple(apple);
+    eva.eatApple(apple);
+    console.log("Sau khi ăn khối lượng của Eva tăng lên "+eva.getWeightHuman());
+    eva.checkApple(apple);
+    //ăn lần 5
+    adam.eatApple(apple);
+    console.log("Sau khi ăn khối lượng của Adam tăng lên "+adam.getWeightHuman());
+    adam.checkApple(apple);
+    eva.eatApple(apple);
+    console.log("Sau khi ăn khối lượng của Eva tăng lên "+eva.getWeightHuman());
+    eva.checkApple(apple);
+</script>
+</body>
+</html>

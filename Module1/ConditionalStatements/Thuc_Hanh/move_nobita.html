@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Move Nobita</title>
+</head>
+<body onload="docReady()">
+<img src="nobita.jpg" id="nobita" style="position:absolute;left: 0; top: 0">
+
+<script>
+    function up() {
+        let img = document.getElementById("nobita");
+        img.style.top = parseInt(img.style.top) - 10 + 'px';
+    }
+    function down() {
+        let img = document.getElementById("nobita");
+        img.style.top = parseInt(img.style.top) + 10 + 'px';
+    }
+    function left() {
+        let img = document.getElementById("nobita");
+        img.style.left = parseInt(img.style.left) - 10 + 'px';
+    }
+    function right() {
+        let img = document.getElementById("nobita");
+        img.style.left = parseInt(img.style.left) + 10 + 'px';
+    }
+    function move(evt) {
+        switch (evt.keyCode) {
+            case 37:
+                left();
+                break;
+            case 39:
+                right();
+                break;
+            case 38:
+                up();
+                break;
+            case 40:
+                down();
+                break;
+        }
+    }
+    function docReady() {
+        window.addEventListener('keydown', move);
+    }
+
+</script>
+</body>
+</html>

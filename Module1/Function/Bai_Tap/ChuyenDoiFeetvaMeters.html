@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="nhap" type="text">
+<input id="ftom" type="button" value="feet to meters" onclick="feet()" >
+<input id="mtof" type="button" value="meters to feet" onclick="met()">
+<p id="kq"></p>
+<script>
+    let total =0;
+    function met() {
+        let tinhToan = document.getElementById('nhap').value;
+        total = tinhToan * 3.279;
+        document.getElementById('kq').innerHTML = total;
+    }
+    function feet() {
+        let tinhToan = document.getElementById('nhap').value;
+        total = tinhToan * 0.305;
+        document.getElementById('kq').innerHTML = total;
+    }
+</script>
+</body>
+</html>

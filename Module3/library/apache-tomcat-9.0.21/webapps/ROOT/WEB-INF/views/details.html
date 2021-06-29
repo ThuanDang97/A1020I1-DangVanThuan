@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+</head>
+<body>
+<form action="/details" th:object="${blogDetails}">
+    <h3 th:text="${blogDetails.title}"></h3>
+    <h3 th:text="${blogDetails.content}"></h3>
+</form>
+<a href="/">Back to list</a>
+</body>
+</html>

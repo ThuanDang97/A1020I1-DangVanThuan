@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sử dụng thẻ HTML</title>
+</head>
+<body>
+    <div id="messagerDiv"></div>
+    <button type="button" onclick="showMessage()";>Click me</button>
+    <button type="button" onclick="clearMessage()";>Clear</button>
+    <script>
+        function showMessage() {
+            document.getElementById('messagerDiv').innerHTML= 'Xin chào';
+        }
+        function clearMessage() {
+            document.getElementById('messagerDiv').innerHTML= '';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính Điểm Trung Bình và Điểm Tổng</title>
+</head>
+<body>
+    <script>
+        Physics = prompt('Nhập điểm vật lý: ');
+        Chemistry = prompt(' Nhập điểm hoá học: ');
+        Biology = prompt(' Nhập điểm sinh học: ');
+        var average = (parseInt(Physics) + parseInt(Chemistry) + parseInt(Biology)) / 3 ;
+        var total = parseInt(Physics) + parseInt(Chemistry) + parseInt(Biology);
+        document.write('Điểm số trung bình là: ' + average);
+        document.write('<br>');
+        document.write('Tổng số điểm là: ' + total );
+    </script>
+
+</body>
+</html>

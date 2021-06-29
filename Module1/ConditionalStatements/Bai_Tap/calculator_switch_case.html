@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+        .number
+        {
+            margin-left: 10px;
+            width: 50px;
+            color: #0066FF;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <input type="text" id="inputnumber" style="width: 240px; margin-left: 10px">
+    <table>
+        <tr>
+            <td><input class="number" type="button" onclick="number('1')" value="1"></td>
+            <td><input class="number" type="button" onclick="number('2')" value="2"></td>
+            <td><input class="number" type="button" onclick="number('3')" value="3"></td>
+            <td><input class="number" type="button" onclick="number('+')" value="+"></td>
+        </tr>
+        <tr>
+            <td><input class="number" type="button" onclick="number('4')" value="4"></td>
+            <td><input class="number" type="button" onclick="number('5')" value="5"></td>
+            <td><input class="number" type="button" onclick="number('6')" value="6"></td>
+            <td><input class="number" type="button" onclick="number('-')" value="-"></td>
+        </tr>
+        <tr>
+            <td><input class="number" type="button" onclick="number('7')" value="7"></td>
+            <td><input class="number" type="button" onclick="number('8')" value="8"></td>
+            <td><input class="number" type="button" onclick="number('9')" value="9"></td>
+            <td><input class="number" type="button" onclick="number('*')" value="*"></td>
+        </tr>
+        <tr>
+            <td><input class="number" type="reset"  value="C"></td>
+            <td><input class="number" type="button" onclick="number('0')" value="0"></td>
+            <td><input class="number" type="button" onclick="phepTinh()" value="="></td>
+            <td><input class="number" type="button" onclick="number('/')" value="/"></td>
+        </tr>
+    </table>
+</form>
+    <script>
+        function number(num) {
+            document.getElementById('inputnumber').value += num;
+        }
+        function phepTinh() {
+            document.getElementById('inputnumber').value = eval(document.getElementById('inputnumber').value);
+        }
+
+    </script>
+</body>
+</html>

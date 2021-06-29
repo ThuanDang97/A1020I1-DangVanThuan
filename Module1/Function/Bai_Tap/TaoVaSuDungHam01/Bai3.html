@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Bài 3: Tạo hàm nhận vào hai tham số. Nếu giá trị của tham số thứ nhất lớn hơn tham số thứ hai, hiển thị hộp thoại thông báo cho người dùng.-->
+<!--Nếu giá trị của tham số thứ nhất nhỏ hơn hoặc bằng tham số thứ hai, trả về tổng của hai tham số.-->
+
+<script>
+    function check(a,b) {
+        a = parseInt(prompt("Vui lòng nhập số 1: "));
+        b = parseInt(prompt("Vui lòng nhập số 2: "));
+        if (a>b){
+            alert("a lớn hơn b");
+        }else {
+            alert('tổng 2 số là '+ (a+b))
+        }
+    }
+    check();
+</script>
+
+</body>
+</html>

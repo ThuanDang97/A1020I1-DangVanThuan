@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Bài 7: Viết hàm truyền vào 2 số nguyên bất kì, thực hiện đổi chỗ hai số nguyên đó.-->
+<script>
+    let a = parseInt(prompt("Nhập số a:"));
+    let b = parseInt(prompt("Nhập số b:"));
+    let c = 0;
+
+    function reverse(arr) {
+        x = arr[0];
+        arr[0] = arr[1];
+        arr[1] = x;
+    }
+    let arr = [];
+    arr[0] = a;
+    arr[1] = b;
+    reverse(arr);
+    console.log(arr);
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Bài 3: Hiển thị ra 20 số trong dãy fibonacci đầu tiên.-->
+<script>
+    let num = prompt('Nhập vào số lượng số fibonacci cần hiển thị: ');
+    let a = 0;
+    let b = 1;
+    let c = "";
+    let d = a + ", "+ b + ", ";
+    for (let i = 0; i < num-2; i++){
+        let c = a + b;
+        d += c + ", ";
+        a = b;
+        b = c;
+    }
+    console.log(d);
+</script>
+</body>
+</html>
