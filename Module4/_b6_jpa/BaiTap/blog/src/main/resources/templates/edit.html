@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Blog</title>
+</head>
+<body>
+<center>
+    <form th:action="@{/blog/edit}" th:object="${blog}" method="post">
+        <h1>Update Blog</h1>
+        <input type="hidden" th:field="*{id}">
+        <table border="1 collapse">
+            <tr>
+                <td>Name Blog</td>
+                <td>
+                    <input type="text" th:field="*{name}" />
+                </td>
+            </tr>
+            <tr>
+                <td>Content Blog</td>
+                <td>
+                    <textarea name="content" cols="30" rows="10" th:field="*{content}">
+
+                    </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Author</td>
+                <td>
+                    <input type="text" th:field="*{author}" />
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Update Blog</button>
+    </form>
+</center>
+</body>
+</html>
