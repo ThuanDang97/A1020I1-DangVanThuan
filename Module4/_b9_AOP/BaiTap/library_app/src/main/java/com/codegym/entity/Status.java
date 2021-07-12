@@ -8,10 +8,8 @@ import java.util.Set;
 public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "status")
     private String status;
 
     @OneToMany(mappedBy = "status")
@@ -51,5 +49,14 @@ public class Status {
 
     public void setCodeAvailableSet(Set<Code> codeAvailableSet) {
         this.codeAvailableSet = codeAvailableSet;
+    }
+
+    @Override
+    public String toString() {
+        return "Status{" +
+                "id=" + id +
+                ", status='" + status + '\'' +
+                ", codeAvailableSet=" + codeAvailableSet +
+                '}';
     }
 }

@@ -16,12 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.ConstraintViolationException;
-import javax.validation.constraints.Min;
-
 @Controller
-
-
 public class BookController {
 
     @Autowired

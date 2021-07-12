@@ -1,10 +1,5 @@
 package com.codegym.entity;
 
-import  lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
@@ -13,10 +8,8 @@ import javax.persistence.*;
 public class Code {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "code")
     @Range(min = 10000, max = 99999)
     private Integer code;
 
@@ -72,5 +65,15 @@ public class Code {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Code{" +
+                "id=" + id +
+                ", code=" + code +
+                ", book=" + book +
+                ", status=" + status +
+                '}';
     }
 }

@@ -1,10 +1,5 @@
 package com.codegym.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -16,23 +11,18 @@ import java.util.Set;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "title")
     @NotBlank
     private String title;
 
-    @Column(name = "year_composed")
     @NotNull
     @Min(1)
     private String year;
 
-    @Column(name = "author")
     @NotBlank
     private String author;
 
-    @Column(name = "quantity")
     @NotNull
     @Min(0)
     private Integer quantity;
@@ -98,5 +88,17 @@ public class Book {
 
     public void setCodeSet(Set<Code> codeSet) {
         this.codeSet = codeSet;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", year='" + year + '\'' +
+                ", author='" + author + '\'' +
+                ", quantity=" + quantity +
+                ", codeSet=" + codeSet +
+                '}';
     }
 }

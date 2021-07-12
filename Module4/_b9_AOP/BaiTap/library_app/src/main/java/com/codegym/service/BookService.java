@@ -50,7 +50,7 @@ public class BookService implements IBookService {
         List<Code> codeList = codeService.findAllCodeByBookId(book.getId());
         for (Code code : codeList) {
             if (code.getCode().equals(usedCode)) {
-                code.setStatus(new Status(2, "used"));
+                code.setStatus(new Status(code.getId(), "used"));
                 break;
             }
         }

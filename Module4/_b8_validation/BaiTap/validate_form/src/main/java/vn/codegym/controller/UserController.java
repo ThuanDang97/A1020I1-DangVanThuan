@@ -6,11 +6,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import vn.codegym.model.User;
@@ -45,5 +41,34 @@ public class UserController {
             userService.save(user);
             return "redirect:/user/list";
         }
+    }
+
+    @GetMapping(value = "/edit/{id}")
+    public String showEditPageUser(@PathVariable("id") int id, Model model) {
+        model.addAttribute("user", userService.findById(id));
+        return "edit";
+    }
+
+    @PostMapping(value = "/edit")
+    public String updateUser(@Valid @ModelAttribute User user, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            return "/edit";
+        } else {
+            redirectAttributes.addFlashAttribute("successMsg", "update user " + user.getFirstName() + " " + user.getLastName() + " ok");
+            userService.update(user);
+            return "redirect:/user/list";
+        }
+    }
+
+    @GetMapping(value = "/delete/{id}")
+    public String deleteUser(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
+        User user = userService.findById(id);
+        if (user != null) {
+            redirectAttributes.addFlashAttribute("successMsg", "update user " + user.getFirstName() + " " + user.getLastName() + " ok");
+            userService.delete(user);
+        } else {
+            redirectAttributes.addFlashAttribute("successMsg", "Delete not found!!!");
+        }
+        return "redirect:/user/list";
     }
 }
