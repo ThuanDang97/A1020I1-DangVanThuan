@@ -1,5 +1,7 @@
 package vn.codegym.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -8,6 +10,7 @@ public class ClassRoom {
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
     private int id;
+
 
     private String name;
 

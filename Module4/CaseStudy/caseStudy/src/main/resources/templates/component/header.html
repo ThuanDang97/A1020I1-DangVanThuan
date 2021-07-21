@@ -12,7 +12,7 @@
     <script src="../bootstrap/js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<div class="container">
+<div class="container mb-2">
     <div class="row">
         <div class="col-auto col-sm-5 col-lg-3 d-flex align-items-center bestel-logo mt-1">
             <a href="https://furamavietnam.com/vi/" class="header-logo"><img
@@ -65,31 +65,35 @@
         </div>
     </div>
 </div>
-<div class="sticky-wrapper mt-2">
-    <div class="header-nav js-header-nav position-sticky">
+<div id="navbar_top" class="sticky-wrapper" >
+    <div class="header-nav js-header-nav">
         <div class="container-fluid ">
             <nav class="navbar navbar-expand-lg">
                 <div class="navbar-collapse">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarNavDropdown">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <div class="">
+
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown" style="position: sticky">
                         <ul class="navbar-nav mr-auto" style="margin-left: 30%">
                             <li id="nav-menu-item-5006"
                                 class="nav-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
-                                <a th:href="@{/}" class="nav-link main-menu-link active">Home</a></li>
+                                <a th:href="@{view}" class="nav-link main-menu-link active">Home</a></li>
                             <li id="nav-menu-item-5007"
                                 class="nav-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
-                                <a th:href="@{/employee}" class="nav-link main-menu-link">Employee</a></li>
+                                <a th:href="@{employee/list}" class="nav-link main-menu-link">Employee</a></li>
                             <li id="nav-menu-item-5008"
                                 class="nav-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
-                                <a th:href="@{customer}" class="nav-link main-menu-link">Customer</a></li>
+                                <a th:href="@{customer/list}" class="nav-link main-menu-link">Customer</a></li>
                             <li id="nav-menu-item-5009"
                                 class="nav-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
-                                <a th:href="@{service}" class="nav-link main-menu-link">Service</a></li>
+                                <a th:href="@{service/list}" class="nav-link main-menu-link">Service</a></li>
                             <li id="nav-menu-item-5010"
                                 class="nav-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
-                                <a th:href="@{contract}" class="nav-link main-menu-link">Contract</a></li>
+                                <a th:href="@{contract/list}" class="nav-link main-menu-link">Contract</a></li>
                         </ul>
                     </div>
                 </div>
@@ -98,6 +102,22 @@
     </div>
 </div>
 
-</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 120) {
+                document.getElementById('navbar_top').classList.add('fixed-top');
+                // add padding top to show content behind navbar
+                navbar_height = document.querySelector('.navbar').offsetHeight;
+                document.body.style.paddingTop = navbar_height + 'px';
+            } else {
+                document.getElementById('navbar_top').classList.remove('fixed-top');
+                // remove padding top from body
+                document.body.style.paddingTop = '0';
+            }
+        });
+    });
+</script>
 </body>
 </html>
