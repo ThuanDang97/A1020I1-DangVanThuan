@@ -20,7 +20,7 @@
         <center>
             <h1 style="font-family: 'Century Schoolbook'" class="mt-5">LIST CUSTOMER</h1>
         </center>
-        <a th:href="@{/create}" type="button" class="btn btn-primary" style="margin-left: 85%">Create Customer</a>
+        <a th:href="@{/customer_create}" type="button" class="btn btn-primary" style="margin-left: 85%">Create Customer</a>
         <table id="tableCustomer" class="table table-striped table-bordered mt-5" style="width: 100%">
             <thead align="center">
             <tr>
@@ -48,10 +48,10 @@
                 <td th:text="${customer.email}"></td>
                 <td th:text="${customer.address}"></td>
                 <td>
-                    <a th:href="@{/customer/edit/__${customer.id}__}">Edit</a>
+                    <a th:href="@{/customer_edit/__${customer.id}__}">Edit</a>
                 </td>
                 <td>
-                    <a th:href="@{/customer/delete/__${customer.id}__}">Delete</a>
+                    <a th:href="@{/customer_delete/__${customer.id}__}">Delete</a>
                 </td>
             </tr>
             </tbody>

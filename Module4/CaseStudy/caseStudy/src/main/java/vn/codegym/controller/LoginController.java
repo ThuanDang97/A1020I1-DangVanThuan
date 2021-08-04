@@ -6,6 +6,8 @@ import vn.codegym.model.account.Admin;
 
 @Controller
 @SessionAttributes("case")
+
+@RequestMapping(value = "")
 public class LoginController {
 
     @ModelAttribute("case")
@@ -31,10 +33,15 @@ public class LoginController {
     }
 
     @GetMapping(value = "/view")
-    public String showViewPage(@SessionAttribute(name = "case") Admin admin) {
-        if (admin.getUserName().equals("admin") && admin.getPassWord().equals("admin")) {
+    public String showViewPage(@SessionAttribute(name = "case", required = false) Admin admin ) {
+        if(admin == null) {
+            return "login";
+        }
+
+        if (admin.getUserName().equals("admin")) {
             return "view";
         }
+
         return "redirect:/login";
     }
 
