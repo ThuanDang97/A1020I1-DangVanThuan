@@ -1,5 +1,6 @@
 package vn.codegym.model.customer;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -15,8 +16,8 @@ public class CustomerType {
     @NotNull
     private String type_name;
 
-    @OneToMany(mappedBy = "customerType")
-    Set<Customer> customers;
+    @OneToMany(mappedBy = "customerType", cascade = CascadeType.REMOVE)
+    private Set<Customer> customers;
 
     public CustomerType() {
     }
@@ -35,6 +36,14 @@ public class CustomerType {
 
     public void setType_name(String type_name) {
         this.type_name = type_name;
+    }
+
+    public Set<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Set<Customer> customers) {
+        this.customers = customers;
     }
 
     @Override

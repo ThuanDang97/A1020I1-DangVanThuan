@@ -33,10 +33,14 @@ public class CustomerController {
         return "customer/create";
     }
 
-//    @PostMapping(value = "/customer_create")
-//    public String createCustomer (@Valid @ModelAttribute Customer customer, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-//        if (bindingResult.hasErrors()){
-//            return "customer/create";
-//        }
-//    }
+    @PostMapping(value = "/customer_create")
+    public String createCustomer (@Valid @ModelAttribute Customer customer, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()){
+            return "customer/create";
+        } else {
+            redirectAttributes.addFlashAttribute("successMsg", "Create New Customer " + customer.getName() + " Successfully !!!");
+            customerService.save(customer);
+            return "redirect:/customer/list";
+        }
+    }
 }

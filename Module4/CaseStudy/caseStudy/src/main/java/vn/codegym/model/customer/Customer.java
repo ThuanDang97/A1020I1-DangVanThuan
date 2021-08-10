@@ -51,17 +51,7 @@ public class Customer implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        Customer customer = (Customer) target;
-        LocalDate today = LocalDate.now();
-        Date birthday = customer.getBirthDay();
-        if (birthday == null) {
-            errors.rejectValue("birthDay", "Năm sinh phải >1900 và nhỏ hơn năm hiện tại 18 năm, đúng định dạng dd/mm/yyyy");
-        } else {
-            LocalDate birthdayLocal = birthday.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            if (Period.between(birthdayLocal, today).getYears() < 18) {
-                errors.rejectValue("birthDay", "Năm sinh phải >1900 và nhỏ hơn năm hiện tại 18 năm, đúng định dạng dd/mm/yyyy");
-            }
-        }
+
     }
 
     public Customer() {
