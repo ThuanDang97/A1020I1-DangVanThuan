@@ -55,12 +55,12 @@ public class CustomerController {
         customerService.validateExistingId(customer, bindingResult);
         if (bindingResult.hasErrors()) {
             model.addAttribute("customerTypes", customerTypeService.findAll());
-            model.addAttribute("customer", new Customer());
             return "customer/create";
         } else {
             customerService.save(customer);
             redirect.addFlashAttribute("message", "Added customer successfully!");
-            return "customer/list";
+            model.addAttribute("customers", customer);
+            return "redirect:/customer";
         }
     }
 
@@ -81,7 +81,7 @@ public class CustomerController {
         } else {
             customerService.save(customer);
             redirect.addFlashAttribute("message", "Updated customer successfully!");
-            return "redirect:/customer/list";
+            return "customer/list";
         }
     }
 
@@ -89,7 +89,7 @@ public class CustomerController {
     public String deleteCustomer(@PathVariable String id, RedirectAttributes redirect) {
         customerService.delete(id);
         redirect.addFlashAttribute("message", "Removed customer successfully!");
-        return "redirect:/customer/list";
+        return "redirect:/customer";
     }
 
     @GetMapping("{id}")
@@ -98,16 +98,16 @@ public class CustomerController {
         return "customer/view";
     }
 
-//    @GetMapping("search")
-//    public String deleteCustomer(@RequestParam String key, @PageableDefault(value = 4) Pageable pageable, Model model) {
-//        Page<Customer> customerList = customerService.findAllByKey(key, pageable);
-//        if (customerList.isEmpty()) {
-//            model.addAttribute("customers", customerService.findAll(pageable));
-//        } else {
-//            model.addAttribute("key")
-//            model.addAttribute("customers", customerList);
-//        }
-//        return "customer/list";
-//    }
+    @GetMapping("search")
+    public String deleteCustomer(@RequestParam String key, @PageableDefault(value = 4) Pageable pageable, Model model) {
+        Page<Customer> customerList = customerService.findAllByKey(key, pageable);
+        if (customerList.isEmpty()) {
+            model.addAttribute("customers", customerService.findAll(pageable));
+        } else {
+            model.addAttribute("key", customerService.findAllByKey(key, pageable));
+            model.addAttribute("customers", customerList);
+        }
+        return "customer/list";
+    }
 
 }

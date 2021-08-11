@@ -51,6 +51,7 @@ public class Customer implements Validator {
     private String customerEmail;
 
     @Column(name = "customer_address", columnDefinition = "VARCHAR(45)")
+    @NotBlank(message = "Customer address must not be empty.")
     private String customerAddress;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE)

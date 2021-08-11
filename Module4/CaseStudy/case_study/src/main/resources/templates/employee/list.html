@@ -47,18 +47,11 @@
             <td class="px-3 align-middle" th:text="${employee.employeeSalary}"></td>
             <td class="px-3 align-middle" th:text="${employee.appUser.username}"></td>
             <td class="px-3">
-                <a th:href="@{/employee/{id}(id=${employee.employeeId})}"
-                   class="view btn bg-transparent shadow-none text-info">
-                    <i class="far fa-eye" data-toggle="tooltip" title="View"></i>
+                <a th:href="@{/employee/{id}(id=${employee.employeeId})}" class="btn-sm btn-success">View</a>
+                <a th:href="@{/employee/{id}/edit(id=${employee.employeeId})}" class="btn-sm btn-info">Edit</a>
+                <a class="btn-sm btn-danger" th:href="@{/employee/{id}/delete(id=${employee.employeeId})}" th:value="${employee.employeeId}" data-target="#deleteModal">
+                    Delete
                 </a>
-                <a th:href="@{/employee/{id}/edit(id=${employee.employeeId})}"
-                   class="edit btn bg-transparent shadow-none text-warning">
-                    <i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i>
-                </a>
-                <button class="delete btn bg-transparent shadow-none text-danger" data-toggle="modal"
-                        data-target="#deleteModal" th:value="${employee.employeeId}">
-                    <i class="fas fa-ban" data-toggle="tooltip" title="Delete"></i>
-                </button>
             </td>
         </tr>
         </tbody>

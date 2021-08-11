@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Title</title>
+<head th:fragment="head">
+    <title>Furama Resort Danang - A Culinary Beach Resort In Vietnam</title>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../bootstrap/css/style.css">
-    <script src="../bootstrap/js/bootstrap.js"></script>
-    <script src="../bootstrap/js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/bootstrap/css/style.css">
+    <script src="/bootstrap/js/bootstrap.js"></script>
+    <script src="/bootstrap/js/jquery-3.6.0.min.js"></script>
+
+
 </head>
 <body>
-<div class="container mb-2" th:fragment="header">
+<div class="container-fluid mb-2" th:fragment="header">
     <div class="row">
-        <div class="col-auto col-sm-5 col-lg-3 d-flex align-items-center bestel-logo mt-1">
+        <div class="col-auto col-sm-5 col-lg-3 d-flex align-items-center bestel-logo mt-1 ml-1">
             <a href="https://furamavietnam.com/vi/" class="header-logo"><img
                     src="https://furamavietnam.com/wp-content/uploads/2018/08/logo.png" alt="logo "
                     class="img-fluid"></a>
@@ -87,7 +89,7 @@
                         <ul class="navbar-nav mr-auto" style="margin-left: 30%">
                             <li id="nav-menu-item-5006"
                                 class="nav-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
-                                <a th:href="@{view}" class="nav-link main-menu-link active">Home</a></li>
+                                <a th:href="@{/view}" class="nav-link main-menu-link active">Home</a></li>
                             <li id="nav-menu-item-5007"
                                 class="nav-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
                                 <a th:href="@{/employee}" class="nav-link main-menu-link">Employee</a></li>

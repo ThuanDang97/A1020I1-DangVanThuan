@@ -7,7 +7,7 @@
 <header th:replace="/layout/header :: header"></header>
 <nav th:replace="/layout/header :: nav-bar"></nav>
 
-<div id="pageContent" class="container mb-4">
+<div id="pageContent" class="container-fluid m-2">
     <div class="row d-flex">
         <h2 class="col py-3">Contract List</h2>
         <div class="col text-right my-auto mr-3">
@@ -49,17 +49,11 @@
             <td class="px-1 align-middle" th:text="${contract.contractDeposit}"></td>
             <td class="px-1 align-middle" th:text="${contract.contractTotalMoney}"></td>
             <td class="px-1">
-                <button class="view btn bg-transparent shadow-none text-info" th:value="${contract.contractId}">
-                    <i class="fas fa-info" data-toggle="tooltip" title="Detail"></i>
-                </button>
-                <a th:href="@{/contract/{id}/edit(id=${contract.contractId})}"
-                   class="edit btn bg-transparent shadow-none text-warning">
-                    <i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i>
+                <a th:href="@{/contract/{id}(id=${contract.contractId})}" class="btn-sm btn-success">View</a>
+                <a th:href="@{/contract/{id}/edit(id=${contract.contractId})}" class="btn-sm btn-info">Edit</a>
+                <a class="btn-sm btn-danger" th:href="@{/contract/{id}/delete(id=${contract.contractId})}" th:value="${contract.contractId}" data-target="#deleteModal">
+                    Delete
                 </a>
-                <button class="delete btn bg-transparent shadow-none text-danger" data-toggle="modal"
-                        data-target="#deleteModal" th:value="${contract.contractId}">
-                    <i class="fas fa-ban" data-toggle="tooltip" title="Delete"></i>
-                </button>
             </td>
         </tr>
         </tbody>
