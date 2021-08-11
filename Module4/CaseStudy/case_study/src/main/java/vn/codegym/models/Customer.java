@@ -8,9 +8,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 
@@ -32,7 +31,7 @@ public class Customer implements Validator {
     private String customerName;
 
     @Column(name = "customer_birthday", columnDefinition = "DATE")
-    private Date customerBirthday;
+    private String customerBirthday;
 
     @Column(name = "customer_gender")
     private boolean customerGender;
@@ -90,11 +89,11 @@ public class Customer implements Validator {
         this.customerName = customerName;
     }
 
-    public Date getCustomerBirthday() {
+    public String getCustomerBirthday() {
         return customerBirthday;
     }
 
-    public void setCustomerBirthday(java.sql.Date customerBirthday) {
+    public void setCustomerBirthday(String customerBirthday) {
         this.customerBirthday = customerBirthday;
     }
 
@@ -150,16 +149,22 @@ public class Customer implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Customer customer = (Customer) target;
-        LocalDate today = LocalDate.now();
-        Date birthday = customer.getCustomerBirthday();
-        if (birthday == null) {
-            errors.rejectValue("birthDay", "Năm sinh phải >1900 và nhỏ hơn năm hiện tại 18 năm, đúng định dạng dd/mm/yyyy");
+        if (customer.customerBirthday.equals("")) {
+            errors.rejectValue("customerBirthday", "customer.age.at.least.18");
         } else {
-            LocalDate birthdayLocal = birthday.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            if (Period.between(birthdayLocal, today).getYears() < 18) {
-                errors.rejectValue("birthDay", "Năm sinh phải >1900 và nhỏ hơn năm hiện tại 18 năm, đúng định dạng dd/mm/yyyy");
+            String[] date = customer.customerBirthday.split("-");
+            int year = Integer.parseInt(date[0]);
+            String birthday = (year + 18) + "-" + date[1] + "-" + date[2];
+            Date birthday18th;
+            try {
+                birthday18th = new SimpleDateFormat("yyyy-MM-dd").parse(birthday);
+                if (birthday18th.compareTo(new Date()) > 0) {
+                    errors.rejectValue("customerBirthday", "customer.age.at.least.18");
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
+
         }
     }
-
 }

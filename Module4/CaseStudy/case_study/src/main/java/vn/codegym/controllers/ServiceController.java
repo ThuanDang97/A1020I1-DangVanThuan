@@ -22,7 +22,7 @@ import java.util.List;
 
 @Controller
 @SessionAttributes("appUser")
-@RequestMapping("service")
+@RequestMapping("/service")
 public class ServiceController {
 
     @Autowired

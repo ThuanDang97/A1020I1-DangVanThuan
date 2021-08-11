@@ -20,7 +20,7 @@ import vn.codegym.services.service.ResortServiceService;
 
 @Controller
 @SessionAttributes("appUser")
-@RequestMapping("contract")
+@RequestMapping("/contract")
 public class ContractController {
 
     @Autowired
@@ -63,7 +63,7 @@ public class ContractController {
         } else {
             contractService.save(contract);
             redirect.addFlashAttribute("message", "Added contract successfully!");
-            return "redirect:/contract";
+            return "contract/list";
         }
     }
 

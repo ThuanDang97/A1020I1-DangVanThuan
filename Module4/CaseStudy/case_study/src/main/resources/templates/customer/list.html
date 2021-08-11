@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Customer List - Furama Resort Danang</title>
     <meta charset="UTF-8">
@@ -11,64 +11,120 @@
     <link rel="stylesheet" href="../bootstrap/datatables/css/dataTables.bootstrap4.min.css">
 </head>
 <body>
-
-<div class="container-fluid">
-    <div class="header">
-        <th:block th:include="component/header"></th:block>
+<div>
+    <div class="header" th:replace="/layout/header :: header">
     </div>
+    <div class="header" th:replace="/layout/header :: nav-bar">
+    </div>
+
     <div class="body">
-        <center>
-            <h1 style="font-family: 'Century Schoolbook'" class="mt-5">LIST CUSTOMER</h1>
-        </center>
-        <a th:href="@{/customer_create}" type="button" class="btn btn-primary" style="margin-left: 85%">Create Customer</a>
-        <table id="tableCustomer" class="table table-striped table-bordered mt-5" style="width: 100%">
-            <thead align="center">
-            <tr>
-                <th>ID</th>
-                <th>Type Customer</th>
-                <th>Full Name</th>
-                <th>Birthday</th>
-                <th>Gender</th>
-                <th>Id Card</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th colspan="2">Action</th>
-            </tr>
-            </thead>
-            <tbody align="center">
-            <tr th:each="customer:${customerList}">
-                <td th:text="${customer.id}"></td>
-                <td th:text="${customer.customerType}"></td>
-                <td th:text="${customer.name}"></td>
-                <td th:text="${customer.birthDay}"></td>
-                <td th:text="${customer.gender}"></td>
-                <td th:text="${customer.idCard}"></td>
-                <td th:text="${customer.phoneNumber}"></td>
-                <td th:text="${customer.email}"></td>
-                <td th:text="${customer.address}"></td>
-                <td>
-                    <a th:href="@{/customer_edit/__${customer.id}__}">Edit</a>
-                </td>
-                <td>
-                    <a th:href="@{/customer_delete/__${customer.id}__}">Delete</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <div>
-            <a th:href="@{'/customer/list'(page=${customerList.number - 1})}" th:if="${customerList.hasPrevious()}">Previous</a>
-            <span th:text="${customerList.number + 1}"></span>/<span th:text="${customerList.totalPages}"></span>
-            <a th:href="@{'/customer/list'(page=${customerList.number + 1})}" th:if="${customerList.hasNext()}">Next</a>
+        <div id="pageContent" class="container mb-4">
+            <div class="row d-flex">
+                <h2 class="col py-3">Customer List</h2>
+                <div class="col text-right my-auto mr-3">
+                    <a th:href="@{/customer/create}" class="btn btn-success p-1">
+                        <i class="fas fa-plus"></i> <span>Add New Customer</span>
+                    </a>
+                </div>
+            </div>
+            <div th:if="${message}">
+                <div class="alert alert-success alert-dismissible fade show font-weight-bold">
+                    <button type="button" class="close btn shadow-none float-right" data-dismiss="alert">&times;
+                    </button>
+                    <span th:text="${message}"></span>
+                </div>
+            </div>
+            <table class="table table-hover text-center" id="customerTable">
+                <thead>
+                <tr>
+                    <th class="pl-1">#</th>
+                    <th class="pl-1">ID</th>
+                    <th class="pl-1">Name</th>
+                    <th class="pl-1">Type</th>
+                    <th class="pl-1">Birthday</th>
+                    <th class="pl-1">Gender</th>
+                    <th class="pl-1">ID Card</th>
+                    <th class="pl-1">Phone</th>
+                    <th class="pl-1">Email</th>
+                    <th class="pl-1">Address</th>
+                    <th class="pl-1">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="customer, iterStat : ${customers}">
+                    <td class="pl-1 pr-0 align-middle"
+                        th:text="${(customers.size * customers.number) + iterStat.count}"></td>
+                    <td class="pl-1 pr-0 align-middle" th:text="${customer.customerId}"></td>
+                    <td class="pl-1 pr-0 align-middle" th:text="${customer.customerName}"></td>
+                    <td class="pl-1 pr-0 align-middle" th:text="${customer.customerType.customerTypeName}"></td>
+                    <td class="pl-1 pr-0 align-middle" th:text="${customer.customerBirthday}"></td>
+                    <td class="pl-1 pr-0 align-middle" th:if="${customer.customerGender}">Male</td>
+                    <td class="pl-1 pr-0 align-middle" th:if="${!customer.customerGender}">Female</td>
+                    <td class="pl-1 pr-0 align-middle" th:text="${customer.customerIdCard}"></td>
+                    <td class="pl-1 pr-0 align-middle" th:text="${customer.customerPhone}"></td>
+                    <td class="pl-1 pr-0 align-middle" th:text="${customer.customerEmail}"></td>
+                    <td class="pl-1 pr-0 align-middle" th:text="${customer.customerAddress}"></td>
+                    <td class="px-0 pr-0">
+                        <a th:href="@{/customer/{id}(id=${customer.customerId})}"
+                           class="view btn bg-transparent shadow-none text-info">
+                            <i class="far fa-eye" data-toggle="tooltip" title="View"></i>
+                        </a>
+                        <a th:href="@{/customer/{id}/edit(id=${customer.customerId})}"
+                           class="edit btn bg-transparent shadow-none text-warning">
+                            <i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i>
+                        </a>
+                        <button class="delete btn bg-transparent shadow-none text-danger" data-toggle="modal"
+                                data-target="#deleteModal" th:value="${customer.customerId}">
+                            <i class="fas fa-ban" data-toggle="tooltip" title="Delete"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="clearfix">
+                <div class="hint-text"
+                     th:utext="'Showing <b>' + ${customers.numberOfElements} + '</b> out of <b>' + ${customers.totalElements} + '</b> entries'">
+                </div>
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a th:href="@{/customer(key = ${key}, page=${customers.number - 1})}"
+                           th:if="${customers.hasPrevious()}"
+                           class="page-link">
+                            <i class="fa fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item" th:each="i: ${#numbers.sequence(0, customers.totalPages - 1)}">
+                        <a class="page-link" th:href="@{/customer(key = ${key}, page = ${i})}" th:text="${i + 1}"></a>
+                    </li>
+                    <li class="page-item">
+                        <a th:href="@{/customer(key = ${key}, page=${customers.number + 1})}"
+                           th:if="${customers.hasNext()}"
+                           class="page-link">
+                            <i class="fa fa-angle-double-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-</div>
-<div class="footer">
-    <th:block th:include="component/footer"></th:block>
-</div>
-</div>
 
+    <div class="footer" th:replace="/layout/footer :: footer">
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#searchForm").attr("action", "/customer");
+
+        $(".alert").delay(2000).slideUp(800, function () {
+            $(this).alert('close');
+        });
+
+        $(".delete").click(function () {
+            $("#deleteForm").attr("action", "/customer/" + $(this).val() + "/delete");
+            $("#deleteModalBody").html("<p>Do you really want to delete this customer?<br>This process cannot be undone.</p>");
+        });
+    });
+</script>
 <script src="../bootstrap/js/jquery-3.6.0.min.js"></script>
 <script src="../bootstrap/js/bootstrap.js"></script>
 <script src="../bootstrap/datatables/js/jquery.dataTables.min.js"></script>

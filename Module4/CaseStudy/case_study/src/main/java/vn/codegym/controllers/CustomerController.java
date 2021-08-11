@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @Controller
 @SessionAttributes("appUser")
-@RequestMapping("customer")
+@RequestMapping("/customer")
 public class CustomerController {
 
     @Autowired
@@ -41,25 +41,26 @@ public class CustomerController {
         return "customer/list";
     }
 
-    @GetMapping("customer_create")
+    @GetMapping("/create")
     public String addCustomer(Model model) {
         model.addAttribute("customerTypes", customerTypeService.findAll());
         model.addAttribute("customer", new Customer());
         return "customer/create";
     }
 
-    @PostMapping("save")
+    @PostMapping("/save")
     public String saveCustomer(@Validated @ModelAttribute Customer customer, BindingResult bindingResult,
                                Model model, RedirectAttributes redirect) {
         new Customer().validate(customer, bindingResult);
         customerService.validateExistingId(customer, bindingResult);
         if (bindingResult.hasErrors()) {
             model.addAttribute("customerTypes", customerTypeService.findAll());
+            model.addAttribute("customer", new Customer());
             return "customer/create";
         } else {
             customerService.save(customer);
             redirect.addFlashAttribute("message", "Added customer successfully!");
-            return "redirect:/customer/list";
+            return "customer/list";
         }
     }
 
@@ -70,7 +71,7 @@ public class CustomerController {
         return "customer/edit";
     }
 
-    @PostMapping("customer_update")
+    @PostMapping("/update")
     public String updateCustomer(@Validated @ModelAttribute Customer customer, BindingResult bindingResult,
                                  Model model, RedirectAttributes redirect) {
         new Customer().validate(customer, bindingResult);
@@ -84,7 +85,7 @@ public class CustomerController {
         }
     }
 
-    @GetMapping("{id}/customer_delete")
+    @GetMapping("{id}/delete")
     public String deleteCustomer(@PathVariable String id, RedirectAttributes redirect) {
         customerService.delete(id);
         redirect.addFlashAttribute("message", "Removed customer successfully!");

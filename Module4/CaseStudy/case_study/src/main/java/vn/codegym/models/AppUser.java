@@ -14,8 +14,6 @@ public class AppUser {
     @Column(name = "encrypted_password", nullable = false)
     private String encryptedPassword;
 
-    @Column(name = "enabled", nullable = false)
-    private boolean enabled;
 
     @OneToOne(mappedBy = "appUser")
     @JsonIgnore
@@ -28,7 +26,6 @@ public class AppUser {
     public AppUser(String username) {
         this.username = username;
         this.encryptedPassword = "123456";
-        this.enabled = true;
     }
 
     public AppUser() {
@@ -50,14 +47,6 @@ public class AppUser {
 
     public void setEncryptedPassword(String encryptedPassword) {
         this.encryptedPassword = encryptedPassword;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
     }
 
     public Employee getEmployee() {

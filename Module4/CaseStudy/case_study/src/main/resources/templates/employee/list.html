@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout/header :: head">
+</head>
+<body class="custom-background d-flex flex-column">
+
+<header th:replace="/layout/header :: header"></header>
+<nav th:replace="/layout/header :: nav-bar"></nav>
+
+<div id="pageContent" class="container mb-4">
+    <div class="row d-flex">
+        <h2 class="col py-3">Employee List</h2>
+        <div class="col text-right my-auto mr-3">
+            <a th:href="@{/employee/create}" class="btn btn-success p-1">
+                <i class="fas fa-plus"></i> <span>Add New Employee</span>
+            </a>
+        </div>
+    </div>
+    <div th:if="${message}">
+        <div class="alert alert-success alert-dismissible fade show font-weight-bold">
+            <button type="button" class="close btn shadow-none float-right" data-dismiss="alert">&times;</button>
+            <span th:text="${message}"></span>
+        </div>
+    </div>
+    <table class="table table-hover text-center" id="employeeTable">
+        <thead>
+        <tr>
+            <th class="px-0">#</th>
+            <th class="px-0">ID</th>
+            <th class="px-0">Name</th>
+            <th class="px-0">Education</th>
+            <th class="px-0">Position</th>
+            <th class="px-0">Division</th>
+            <th class="px-0">Salary</th>
+            <th class="px-0">User</th>
+            <th class="px-0">Actions</th>
+        </tr>
+        </thead>
+        <tbody id="employeeTableBody">
+        <tr th:each="employee, iterStat : ${employees}">
+            <td class="px-3 align-middle" th:text="${(employees.size * employees.number) + iterStat.count}"></td>
+            <td class="px-3 align-middle" th:text="${employee.employeeId}"></td>
+            <td class="px-3 align-middle" th:text="${employee.employeeName}"></td>
+            <td class="px-3 align-middle" th:text="${employee.educationDegree.degreeName}"></td>
+            <td class="px-3 align-middle" th:text="${employee.position.positionName}"></td>
+            <td class="px-3 align-middle" th:text="${employee.division.divisionName}"></td>
+            <td class="px-3 align-middle" th:text="${employee.employeeSalary}"></td>
+            <td class="px-3 align-middle" th:text="${employee.appUser.username}"></td>
+            <td class="px-3">
+                <a th:href="@{/employee/{id}(id=${employee.employeeId})}"
+                   class="view btn bg-transparent shadow-none text-info">
+                    <i class="far fa-eye" data-toggle="tooltip" title="View"></i>
+                </a>
+                <a th:href="@{/employee/{id}/edit(id=${employee.employeeId})}"
+                   class="edit btn bg-transparent shadow-none text-warning">
+                    <i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i>
+                </a>
+                <button class="delete btn bg-transparent shadow-none text-danger" data-toggle="modal"
+                        data-target="#deleteModal" th:value="${employee.employeeId}">
+                    <i class="fas fa-ban" data-toggle="tooltip" title="Delete"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="clearfix">
+        <div class="hint-text"
+             th:utext="'Showing <b>' + ${employees.numberOfElements} + '</b> out of <b>' + ${employees.totalElements} + '</b> entries'">
+        </div>
+        <ul class="pagination">
+            <li class="page-item">
+                <a th:href="@{/employee(page=${employees.number - 1})}" th:if="${employees.hasPrevious()}"
+                   class="page-link">
+                    <i class="fa fa-angle-double-left"></i>
+                </a>
+            </li>
+            <li class="page-item" th:each="i: ${#numbers.sequence(0, employees.totalPages - 1)}">
+                <a class="page-link" th:href="@{/employee(page = ${i})}" th:text="${i + 1}"></a>
+            </li>
+            <li class="page-item">
+                <a th:href="@{/employee(page=${employees.number + 1})}" th:if="${employees.hasNext()}" class="page-link">
+                    <i class="fa fa-angle-double-right"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<footer th:replace="/layout/footer :: footer"></footer>
+<div th:replace="/layout/delete-confirm :: modal"></div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#searchForm").attr("action", "/employee");
+
+        $(".alert").delay(2000).slideUp(800, function () {
+            $(this).alert('close');
+        });
+
+        $(".delete").click(function () {
+            $("#deleteForm").attr("action", "/employee/" + $(this).val() + "/delete");
+            $("#deleteModalBody").html("<p>Do you really want to delete this employee?<br>This process cannot be undone.</p>");
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

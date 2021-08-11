@@ -21,7 +21,7 @@
                             src="https://furamavietnam.com/wp-content/uploads/2018/08/logo.png" alt="logo "
                             class="img-fluid"></a>
                 </div>
-                <div class="col col-md-auto col-lg-3 d-flex">
+                <div class="col col-md-auto col-lg-2 d-flex">
                 </div>
                 <div class="col-sm-3 d-none d-lg-block">
                     <div class="header-contact d-flex">
@@ -64,6 +64,9 @@
                                 reservation@furamavietnam.com </a>
                         </div>
                     </div>
+                </div>
+                <div class="col-sm-1 d-none d-lg-block">
+                    <a th:href="@{/login}">Login</a>
                 </div>
             </div>
         </div>
@@ -164,7 +167,7 @@
     </div>
     <div class="footer">
         <div>
-            <th:block th:include="component/footer"></th:block>
+            <th:block th:include="layout/footer"></th:block>
         </div>
     </div>
 </div>

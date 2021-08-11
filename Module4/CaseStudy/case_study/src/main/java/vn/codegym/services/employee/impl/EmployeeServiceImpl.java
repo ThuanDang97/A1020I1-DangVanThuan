@@ -40,7 +40,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void delete(Integer id) {
         Employee employee = findById(id);
-        employee.getAppUser().setEnabled(false);
         repository.deleteById(id);
     }
 

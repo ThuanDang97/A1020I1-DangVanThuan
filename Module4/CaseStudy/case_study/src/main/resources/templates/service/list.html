@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout/header :: head">
+</head>
+<body class="custom-background d-flex flex-column">
+
+<header th:replace="/layout/header :: header"></header>
+<nav th:replace="/layout/header :: nav-bar"></nav>
+
+<div id="pageContent" class="container mb-4">
+    <div class="row d-flex">
+        <h2 class="col py-3">Service List</h2>
+        <div class="col text-right my-auto mr-3">
+            <a th:href="@{/service/create}" class="btn btn-success p-1">
+                <i class="fas fa-plus"></i> <span>Add New Service</span>
+            </a>
+        </div>
+    </div>
+    <div th:if="${message}">
+        <div class="alert alert-success alert-dismissible fade show font-weight-bold">
+            <button type="button" class="close btn shadow-none float-right" data-dismiss="alert">&times;</button>
+            <span th:text="${message}"></span>
+        </div>
+    </div>
+    <table class="table table-hover text-center" id="serviceTable">
+        <thead>
+        <tr>
+            <th class="px-0">#</th>
+            <th class="px-0">ID</th>
+            <th class="px-0">Service</th>
+            <th class="px-0">Service Type</th>
+            <th class="px-0">Room Standard</th>
+            <th class="px-0">Area</th>
+            <th class="px-0">No. of Floors</th>
+            <th class="px-0">Rent Type</th>
+            <th class="px-0">Cost</th>
+            <th class="px-0">Actions</th>
+        </tr>
+        </thead>
+        <tbody id="serviceTableBody">
+        <tr th:each="service, iterStat : ${services}">
+            <td class="px-3 align-middle" th:text="${(services.size * services.number) + iterStat.count}"></td>
+            <td class="px-3 align-middle" th:text="${service.serviceId}"></td>
+            <td class="px-3 align-middle" th:text="${service.serviceName}"></td>
+            <td class="px-3 align-middle" th:text="${service.serviceType.serviceTypeName}"></td>
+            <td class="px-3 align-middle" th:text="${service.roomStandard}"></td>
+            <td class="px-3 align-middle" th:text="${service.serviceArea}"></td>
+            <td class="px-3 align-middle" th:text="${service.numberOfFloors}"></td>
+            <td class="px-3 align-middle" th:text="${service.rentType.rentTypeName}"></td>
+            <td class="px-3 align-middle" th:text="${service.serviceCost}"></td>
+            <td class="px-3">
+                <a class="view btn bg-transparent shadow-none text-info"
+                   th:href="@{/service/{id}(id=${service.serviceId})}">
+                    <i class="far fa-eye" data-toggle="tooltip" title="View"></i>
+                </a>
+                <a class="edit btn bg-transparent shadow-none text-warning"
+                   th:href="@{/service/{id}/edit(id=${service.serviceId})}">
+                    <i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i>
+                </a>
+                <button class="delete btn bg-transparent shadow-none text-danger" data-toggle="modal"
+                        data-target="#deleteModal" th:value="${service.serviceId}">
+                    <i class="fas fa-ban" data-toggle="tooltip" title="Delete"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="clearfix">
+        <div class="hint-text"
+             th:utext="'Showing <b>' + ${services.numberOfElements} + '</b> out of <b>' + ${services.totalElements} + '</b> entries'">
+        </div>
+        <ul class="pagination">
+            <li class="page-item">
+                <a th:href="@{/service(page=${services.number - 1})}" th:if="${services.hasPrevious()}"
+                   class="page-link">
+                    <i class="fa fa-angle-double-left"></i>
+                </a>
+            </li>
+            <li class="page-item" th:each="i: ${#numbers.sequence(0, services.totalPages - 1)}">
+                <a class="page-link" th:href="@{/service(page = ${i})}" th:text="${i + 1}"></a>
+            </li>
+            <li class="page-item">
+                <a th:href="@{/service(page=${services.number + 1})}" th:if="${services.hasNext()}" class="page-link">
+                    <i class="fa fa-angle-double-right"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<footer th:replace="/layout/footer :: footer"></footer>
+<div th:replace="/layout/delete-confirm :: modal"></div>
+
+<script>
+
+    $(document).ready(function () {
+        $(".alert").delay(2000).slideUp(800, function () {
+            $(this).alert('close');
+        });
+
+        $(".delete").click(function () {
+            $("#deleteForm").attr("action", "/service/" + $(this).val() + "/delete");
+            $("#deleteModalBody").html("<p>Do you really want to delete this service?<br>This process cannot be undone.</p>");
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

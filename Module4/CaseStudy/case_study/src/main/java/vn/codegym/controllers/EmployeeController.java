@@ -23,7 +23,7 @@ import java.util.Optional;
 
 @Controller
 @SessionAttributes("appUser")
-@RequestMapping("employee")
+@RequestMapping("/employee")
 public class EmployeeController {
 
     @Autowired
@@ -57,7 +57,7 @@ public class EmployeeController {
         return "employee/list";
     }
 
-    @GetMapping("create")
+    @GetMapping("/create")
     public String addEmployee(Model model) {
         model.addAttribute("educationDegrees", educationDegreeService.findAll());
         model.addAttribute("positions", positionService.findAll());
@@ -66,7 +66,7 @@ public class EmployeeController {
         return "employee/create";
     }
 
-    @PostMapping("save")
+    @PostMapping("/save")
     public String saveEmployee(@Validated @ModelAttribute Employee employee, BindingResult bindingResult,
                                @RequestParam String username, Model model, RedirectAttributes redirect) {
         new Employee().validate(employee, bindingResult);
@@ -94,7 +94,7 @@ public class EmployeeController {
         return "employee/edit";
     }
 
-    @PostMapping("update")
+    @PostMapping("/update")
     public String updateEmployee(@Validated @ModelAttribute Employee employee, BindingResult bindingResult,
                                  Model model, RedirectAttributes redirect) {
         new Employee().validate(employee, bindingResult);
