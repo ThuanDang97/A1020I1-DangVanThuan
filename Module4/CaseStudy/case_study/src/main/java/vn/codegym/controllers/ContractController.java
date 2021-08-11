@@ -63,7 +63,7 @@ public class ContractController {
         } else {
             contractService.save(contract);
             redirect.addFlashAttribute("message", "Added contract successfully!");
-            return "contract/list";
+            return "redirect:/contract";
         }
     }
 
