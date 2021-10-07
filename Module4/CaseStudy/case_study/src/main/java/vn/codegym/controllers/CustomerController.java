@@ -58,7 +58,7 @@ public class CustomerController {
             return "customer/create";
         } else {
             customerService.save(customer);
-            redirect.addFlashAttribute("message", "Added customer successfully!");
+            redirect.addFlashAttribute("message", "Added customer " + customer.getCustomerName() + " successfully!");
             model.addAttribute("customers", customer);
             return "redirect:/customer";
         }
@@ -80,13 +80,15 @@ public class CustomerController {
             return "customer/create";
         } else {
             customerService.save(customer);
-            redirect.addFlashAttribute("message", "Updated customer successfully!");
+            redirect.addFlashAttribute("message", "Updated customer " + customer.getCustomerName() + " successfully!");
             return "customer/list";
         }
     }
 
-    @GetMapping("{id}/delete")
+    @GetMapping("/delete/{id}")
     public String deleteCustomer(@PathVariable String id, RedirectAttributes redirect) {
+        customerService.findById(id);
+        System.out.println(id);
         customerService.delete(id);
         redirect.addFlashAttribute("message", "Removed customer successfully!");
         return "redirect:/customer";

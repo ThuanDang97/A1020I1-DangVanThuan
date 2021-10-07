@@ -1,6 +1,8 @@
 package vn.codegym.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jdk.nashorn.internal.objects.annotations.Getter;
+import jdk.nashorn.internal.objects.annotations.Setter;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -14,6 +16,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
+
 public class Customer implements Validator {
 
     @Id

@@ -81,7 +81,7 @@ public class EmployeeController {
             employee.setAppUser(user);
             employeeService.save(employee);
             redirect.addFlashAttribute("message", "Added employee successfully!");
-            return "redirect:/employee";
+            return "employee/list";
         }
     }
 

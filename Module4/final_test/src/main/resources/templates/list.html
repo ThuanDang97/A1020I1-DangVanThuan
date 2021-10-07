@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/header :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="header">
+        <div th:replace="/layout/header :: header"></div>
+    </div>
+
+    <div class="body">
+        <div th:if="${message}">
+            <div class="alert alert-success alert-dismissible fade show font-weight-bold">
+                <button type="button" class="close btn shadow-none float-right" data-dismiss="alert">&times;
+                </button>
+                <span th:text="${message}"></span>
+            </div>
+        </div>
+        <table class="table table-hover text-center" id="customerTable">
+            <thead>
+            <tr>
+                <th class="pl-1">Title</th>
+                <th class="pl-1">Start Date</th>
+                <th class="pl-1">End Date</th>
+                <th class="pl-1">Discount</th>
+                <th class="pl-1">Details</th>
+                <th class="pl-1" colspan="2">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="promotion : ${promotions}">
+                <td class="pl-1 pr-0 align-middle" th:text="${promotion.title}"></td>
+                <td class="pl-1 pr-0 align-middle" th:text="${promotion.startDate}"></td>
+                <td class="pl-1 pr-0 align-middle" th:text="${promotion.endDate}"></td>
+                <td class="pl-1 pr-0 align-middle" th:text="${promotion.discount}"></td>
+                <td class="pl-1 pr-0 align-middle" th:text="${promotion.detail}"></td>
+                <td class="px-0 pr-0">
+                    <a th:href="@{/promotion/{id}/edit(id=${promotion.id})}" class="btn-sm btn-info">Edit</a>
+                    <a class="btn-sm btn-danger" th:href="@{/promotion/delete/{id}(id=${promotion.id})}"
+                       th:value="${promotion.id}" data-target="#deleteModal">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        <div th:replace="/layout/footer :: footer">
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#searchForm").attr("action", "/promotion/search");
+
+        $(".alert").delay(2000).slideUp(800, function () {
+            $(this).alert('close');
+        });
+    });
+</script>
+
+
+</body>
+</html>

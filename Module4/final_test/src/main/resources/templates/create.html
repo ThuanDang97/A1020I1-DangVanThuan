@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout/header :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="header">
+        <div th:replace="/layout/header :: header"></div>
+    </div>
+    <div class="container body">
+        <form th:action="@{/promotion/save}" method="post" th:object="${promotion}">
+            <table class="table table-borderless">
+                <tr class="form-group row">
+                    <span th:field="*{id}" hidden>
+                    </span>
+                    <th class="col-4">
+                        <label for="title">Title<span class="text-danger font-weight-bold">*</span></label>
+                    </th>
+                    <td class="col-8">
+                        <input class="form-control" type="text" id="title" th:field="*{title}">
+                        <div class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+                    </td>
+                </tr>
+                <tr class="form-group row">
+                    <th class="col-4">
+                        <label for="startDate">Start Date<span class="text-danger font-weight-bold">*</span></label>
+                    </th>
+                    <td class="col-8">
+                        <input class="form-control w-50" type="date" id="startDate" th:field="*{startDate}">
+                        <div class="text-danger" th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></div>
+                    </td>
+                </tr>
+                <tr class="form-group row">
+                    <th class="col-4">
+                        <label for="endDate">End Date<span class="text-danger font-weight-bold">*</span></label>
+                    </th>
+                    <td class="col-8">
+                        <input class="form-control w-50" type="date" id="endDate" th:field="*{endDate}">
+                        <div class="text-danger" th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></div>
+                    </td>
+                </tr>
+                <tr class="form-group row">
+                    <th class="col-4">
+                        <label for="discount">Discount<span class="text-danger font-weight-bold">*</span></label>
+                    </th>
+                    <td class="col-8">
+                        <input class="form-control" type="text" id="discount" th:field="*{discount}">
+                        <div class="text-danger" th:if="${#fields.hasErrors('discount')}" th:errors="*{discount}"></div>
+                    </td>
+                </tr>
+                <tr class="form-group row">
+                    <th class="col-4">
+                        <label for="detail">Details<span class="text-danger font-weight-bold">*</span></label>
+                    </th>
+                    <td class="col-8">
+                        <textarea class="form-control" type="text" id="detail" th:field="*{detail}"> </textarea>
+                        <div class="text-danger" th:if="${#fields.hasErrors('detail')}" th:errors="*{detail}"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center">
+                        <a th:href="@{/promotion}" class="btn btn-secondary px-4" type="button">Back</a>
+                        <button class="btn btn-success px-4" type="submit">Add</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div class="footer">
+        <div th:replace="/layout/footer :: footer">
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#searchForm").attr("action", "/customer");
+    });
+</script>
+
+</body>
+</html>

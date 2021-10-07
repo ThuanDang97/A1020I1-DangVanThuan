@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="/bootstrap/css/style.css">
     <script src="/bootstrap/js/bootstrap.js"></script>
     <script src="/bootstrap/js/jquery-3.6.0.min.js"></script>
-
-
 </head>
 <body>
 <div class="container-fluid mb-2" th:fragment="header">
@@ -82,9 +80,6 @@
                             data-target="#navbarNavDropdown">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="">
-
-                    </div>
                     <div class="collapse navbar-collapse" id="navbarNavDropdown" style="position: sticky">
                         <ul class="navbar-nav mr-auto" style="margin-left: 30%">
                             <li id="nav-menu-item-5006"
@@ -104,6 +99,14 @@
                                 <a th:href="@{/contract}" class="nav-link main-menu-link">Contract</a></li>
                         </ul>
                     </div>
+                    <form class="navbar-form navbar-right" method="get" id="searchForm">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="searchValue" name="key" placeholder="Search">
+                            <button id="searchBtn" class="btn-sm btn-light" type="submit">
+                              Search
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </nav>
         </div>
